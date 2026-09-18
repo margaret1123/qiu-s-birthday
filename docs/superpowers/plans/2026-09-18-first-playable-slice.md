@@ -340,15 +340,12 @@ func _try_interact() -> void:
 Create `scenes/core/player.tscn`:
 
 ```ini
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=3 format=3]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_player"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_player"]
 size = Vector2(12, 16)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_visual"]
-size = Vector2(14, 20)
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 1
@@ -628,6 +625,9 @@ Create `tests/test_dialogue.gd`:
 extends SceneTree
 
 func _init() -> void:
+	call_deferred("_run")
+
+func _run() -> void:
 	var packed := load("res://scenes/ui/dialogue_ui.tscn") as PackedScene
 	assert(packed != null)
 
@@ -968,14 +968,17 @@ Create `tests/test_game_smoke.gd`:
 extends SceneTree
 
 func _init() -> void:
+	call_deferred("_run")
+
+func _run() -> void:
 	var packed := load("res://scenes/core/game.tscn") as PackedScene
 	assert(packed != null)
 
 	var game := packed.instantiate()
 	root.add_child(game)
 
-	await process_frame
-	await process_frame
+	for _i in range(4):
+		await process_frame
 
 	assert(game.get_node_or_null("World/S01Classroom") != null)
 	assert(game.get_node_or_null("Player") != null)
@@ -1461,8 +1464,7 @@ progressive_web_app/icon_512x512=""
 
 Append to `README.md`:
 
-```markdown
-
+````markdown
 ## Run
 
 ```bash
@@ -1490,7 +1492,7 @@ godot --headless --path . --export-release Web build/web/index.html
 ```
 
 Serve `build/web` through a local HTTP server for browser testing; do not open `index.html` directly from the filesystem.
-```
+````
 
 - [ ] **Step 3: Run the full automated check set**
 
