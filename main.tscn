@@ -1,9 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://clp20p1awv1h8"]
+[gd_scene load_steps=21 format=3 uid="uid://clp20p1awv1h8"]
 
 [ext_resource type="Texture2D" path="res://art/bg/S01_classroom_morning_bg.png" id="1_bg"]
 [ext_resource type="PackedScene" uid="uid://bvt8qnxwqy3ey" path="res://player.tscn" id="2_player"]
 [ext_resource type="PackedScene" uid="uid://duah71j3glpcq" path="res://npc.tscn" id="3_biu"]
 [ext_resource type="PackedScene" uid="uid://d2u0lp08bk2p2" path="res://dialogue_box.tscn" id="4_dialogue"]
+[ext_resource type="Script" path="res://main.gd" id="5_maingd"]
+[ext_resource type="PackedScene" uid="uid://cq7x2m4vb9n8t" path="res://choice_box.tscn" id="6_choice"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_left_wall"]
 size = Vector2(290, 1141)
@@ -48,6 +50,7 @@ size = Vector2(235, 265)
 size = Vector2(265, 190)
 
 [node name="ClassroomMorning" type="Node2D"]
+script = ExtResource("5_maingd")
 
 [node name="Background" type="Node2D" parent="."]
 
@@ -193,3 +196,5 @@ dialogue_lines = Array[String](["作业收得差不多了。", "我还得去办�
 interaction_size = Vector2(140, 120)
 
 [node name="DialogueBox" parent="." instance=ExtResource("4_dialogue")]
+
+[node name="ChoiceBox" parent="." instance=ExtResource("6_choice")]

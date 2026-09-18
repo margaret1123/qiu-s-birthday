@@ -1,0 +1,110 @@
+[gd_scene load_steps=7 format=3 uid="uid://cq7x2m4vb9n8t"]
+
+[ext_resource type="Script" path="res://choice_box.gd" id="1_cbgd"]
+[ext_resource type="Texture2D" path="res://art/UI/UI_choice_normal.png" id="2_plate_n"]
+[ext_resource type="Texture2D" path="res://art/UI/UI_choice_selected.png" id="3_plate_s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_plate_normal"]
+atlas = ExtResource("2_plate_n")
+region = Rect2(101, 289, 1573, 309)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_plate_selected"]
+atlas = ExtResource("3_plate_s")
+region = Rect2(101, 289, 1573, 309)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_panel"]
+
+[node name="ChoiceBox" type="CanvasLayer"]
+layer = 21
+script = ExtResource("1_cbgd")
+plate_normal = SubResource("AtlasTexture_plate_normal")
+plate_selected = SubResource("AtlasTexture_plate_selected")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -680.0
+offset_top = -300.0
+offset_right = -60.0
+offset_bottom = -44.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_panel")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+
+[node name="Option0" type="Button" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(620, 122)
+layout_mode = 2
+focus_mode = 0
+flat = true
+
+[node name="Plate" type="TextureRect" parent="Panel/VBoxContainer/Option0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_plate_normal")
+expand_mode = 1
+stretch_mode = 0
+
+[node name="Text" type="Label" parent="Panel/VBoxContainer/Option0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 118.0
+offset_right = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 0.952941, 0.627451, 1)
+theme_override_font_sizes/font_size = 24
+text = "Option 0"
+vertical_alignment = 1
+
+[node name="Option1" type="Button" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(620, 122)
+layout_mode = 2
+focus_mode = 0
+flat = true
+
+[node name="Plate" type="TextureRect" parent="Panel/VBoxContainer/Option1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_plate_normal")
+expand_mode = 1
+stretch_mode = 0
+
+[node name="Text" type="Label" parent="Panel/VBoxContainer/Option1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 118.0
+offset_right = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 24
+text = "Option 1"
+vertical_alignment = 1
