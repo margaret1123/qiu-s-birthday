@@ -1,5 +1,7 @@
 # Qiu Birthday First Playable Slice Implementation Plan
 
+> **Status:** Tasks 1-2 were completed. Tasks 3 onward are superseded by `docs/superpowers/plans/2026-09-18-simplified-scene-slice.md`, which removes the persistent Game shell, SceneManager, and JSON dialogue layer in favor of a simpler scene-by-scene flow.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Build the smallest complete Godot Web vertical slice: S01 placeholder classroom, four-direction movement, collision, interaction, dialogue, two choices, mobile landscape controls, and a fade transition to a second placeholder map.
