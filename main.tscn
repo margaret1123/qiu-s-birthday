@@ -113,17 +113,80 @@ shape = SubResource("RectangleShape2D_desk_c_upper")
 position = Vector2(907.5, 785)
 shape = SubResource("RectangleShape2D_desk_c_lower")
 
-[node name="Player" parent="." instance=ExtResource("2_player")]
+[node name="WorldSort" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="PodiumOccluder" type="Polygon2D" parent="WorldSort"]
+position = Vector2(0, 508)
+texture = ExtResource("1_bg")
+polygon = PackedVector2Array(616, -128, 857, -116, 857, 0, 616, 0)
+uv = PackedVector2Array(616, 380, 857, 392, 857, 508, 616, 508)
+
+[node name="DeskA1Occluder" type="Polygon2D" parent="WorldSort"]
+position = Vector2(0, 575)
+texture = ExtResource("1_bg")
+polygon = PackedVector2Array(200, -97, 381, -120, 384, -89, 384, -65, 396, -47, 396, -11, 387, -2, 387, 0, 200, 0)
+uv = PackedVector2Array(200, 478, 381, 455, 384, 486, 384, 510, 396, 528, 396, 564, 387, 573, 387, 575, 200, 575)
+
+[node name="DeskB1Occluder" type="Polygon2D" parent="WorldSort"]
+position = Vector2(0, 575)
+texture = ExtResource("1_bg")
+polygon = PackedVector2Array(527, -102, 700, -119, 742, -59, 715, -56, 719, -47, 719, -11, 711, -2, 711, 0, 492, 0, 492, -2, 502, -23, 533, -29, 533, -59, 525, -68, 525, -80, 532, -89)
+uv = PackedVector2Array(527, 473, 700, 456, 742, 516, 715, 519, 719, 528, 719, 564, 711, 573, 711, 575, 492, 575, 492, 573, 502, 552, 533, 546, 533, 516, 525, 507, 525, 495, 532, 486)
+
+[node name="DeskA2Occluder" type="Polygon2D" parent="WorldSort"]
+position = Vector2(0, 672)
+texture = ExtResource("1_bg")
+polygon = PackedVector2Array(95, -106, 348, -124, 382, -94, 363, -88, 364, -70, 360, -64, 316, -61, 328, -40, 329, -4, 329, 0, 90, 0)
+uv = PackedVector2Array(95, 566, 348, 548, 382, 578, 363, 584, 364, 602, 360, 608, 316, 611, 328, 632, 329, 668, 329, 672, 90, 672)
+
+[node name="DeskB2Occluder" type="Polygon2D" parent="WorldSort"]
+position = Vector2(0, 694)
+texture = ExtResource("1_bg")
+polygon = PackedVector2Array(490, -124, 680, -142, 690, -114, 691, -81, 704, -63, 704, -21, 692, -9, 676, -6, 676, 0, 440, 0, 440, -4, 453, -31, 487, -40, 486, -79, 479, -82, 479, -97)
+uv = PackedVector2Array(490, 570, 680, 552, 690, 580, 691, 613, 704, 631, 704, 673, 692, 685, 676, 688, 676, 694, 440, 694, 440, 690, 453, 663, 487, 654, 486, 615, 479, 612, 479, 597)
+
+[node name="DeskCUpOccluder" type="Polygon2D" parent="WorldSort"]
+position = Vector2(0, 700)
+texture = ExtResource("1_bg")
+polygon = PackedVector2Array(847, -223, 1012, -245, 1040, 0, 798, 0, 798, -10, 803, -34, 813, -40, 813, -85, 806, -88, 806, -106, 816, -145, 835, -151, 835, -172)
+uv = PackedVector2Array(847, 477, 1012, 455, 1040, 700, 798, 700, 798, 690, 803, 666, 813, 660, 813, 615, 806, 612, 806, 594, 816, 555, 835, 549, 835, 528)
+
+[node name="DeskB3Occluder" type="Polygon2D" parent="WorldSort"]
+position = Vector2(0, 840)
+texture = ExtResource("1_bg")
+polygon = PackedVector2Array(437, -166, 672, -184, 669, -140, 671, -107, 685, -86, 685, -38, 674, -23, 656, -20, 658, -2, 658, 0, 403, 0, 403, -2, 412, -20, 434, -23, 434, -104, 426, -107, 426, -125, 434, -140)
+uv = PackedVector2Array(437, 674, 672, 656, 669, 700, 671, 733, 685, 754, 685, 802, 674, 817, 656, 820, 658, 838, 658, 840, 403, 840, 403, 838, 412, 820, 434, 817, 434, 736, 426, 733, 426, 715, 434, 700)
+
+[node name="DeskA3Occluder" type="Polygon2D" parent="WorldSort"]
+position = Vector2(0, 880)
+texture = ExtResource("1_bg")
+polygon = PackedVector2Array(8, -212, 285, -228, 323, -202, 318, -196, 293, -190, 294, -169, 290, -166, 244, -163, 244, -145, 257, -124, 257, -79, 242, -64, 214, -61, 213, -31, 213, 0, 0, 0)
+uv = PackedVector2Array(8, 668, 285, 652, 323, 678, 318, 684, 293, 690, 294, 711, 290, 714, 244, 717, 244, 735, 257, 756, 257, 801, 242, 816, 214, 819, 213, 849, 213, 880, 0, 880)
+
+[node name="DeskB4Occluder" type="Polygon2D" parent="WorldSort"]
+position = Vector2(0, 880)
+texture = ExtResource("1_bg")
+polygon = PackedVector2Array(398, -68, 672, -82, 681, -71, 673, -62, 658, -59, 656, -2, 656, 0, 385, 0, 385, -2, 409, -56, 434, -62)
+uv = PackedVector2Array(398, 812, 672, 798, 681, 809, 673, 818, 658, 821, 656, 878, 656, 880, 385, 880, 385, 878, 409, 824, 434, 818)
+
+[node name="DeskCLowOccluder" type="Polygon2D" parent="WorldSort"]
+position = Vector2(0, 880)
+texture = ExtResource("1_bg")
+polygon = PackedVector2Array(792, -166, 1032, -180, 1040, 0, 776, 0, 776, -3, 785, -54, 799, -63, 799, -144, 790, -150)
+uv = PackedVector2Array(792, 714, 1032, 700, 1040, 880, 776, 880, 776, 877, 785, 826, 799, 817, 799, 736, 790, 730)
+
+[node name="Player" parent="WorldSort" instance=ExtResource("2_player")]
 position = Vector2(1080, 770)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
+[node name="Camera2D" type="Camera2D" parent="WorldSort/Player"]
 zoom = Vector2(0.77, 0.77)
 limit_left = 0
 limit_top = 0
 limit_right = 1672
 limit_bottom = 941
 
-[node name="Biu" parent="." instance=ExtResource("3_biu")]
+[node name="Biu" parent="WorldSort" instance=ExtResource("3_biu")]
 position = Vector2(1290, 660)
 npc_name = "biu"
 dialogue_lines = Array[String](["作业收得差不多了。", "我还得去办公室一趟。", "你不是也要去拿作业吗？", "走，一起。"])
