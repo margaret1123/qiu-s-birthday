@@ -9,6 +9,14 @@ func _ready() -> void:
 		GlobalState.spawn_position = Vector2(-1.0, -1.0)
 
 func _physics_process(_delta):
+	# While a dialogue is open the player stands still; the same keys are used
+	# to advance the dialogue instead of walking.
+	var dialogue_box = get_tree().get_first_node_in_group("dialogue_box")
+	if dialogue_box and dialogue_box.is_open():
+		velocity = Vector2.ZERO
+		move_and_slide()
+		return
+
 	# Get input direction
 	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 

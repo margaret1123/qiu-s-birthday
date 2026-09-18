@@ -1,163 +1,132 @@
-[gd_scene load_steps=14 format=3 uid="uid://clp20p1awv1h8"]
+[gd_scene load_steps=19 format=3 uid="uid://clp20p1awv1h8"]
 
-[ext_resource type="PackedScene" uid="uid://bvt8qnxwqy3ey" path="res://player.tscn" id="1_jsbj5"]
-[ext_resource type="PackedScene" uid="uid://duah71j3glpcq" path="res://npc.tscn" id="2_p0dqw"]
-[ext_resource type="PackedScene" uid="uid://d2u0lp08bk2p2" path="res://dialogue_box.tscn" id="3_1r0fy"]
-[ext_resource type="PackedScene" uid="uid://djxp2nw8ymk4b" path="res://minimap.tscn" id="4_mm001"]
-[ext_resource type="PackedScene" uid="uid://cmtx6p4xabkr8" path="res://full_map.tscn" id="5_fm001"]
-[ext_resource type="Script" path="res://main.gd" id="6_main001"]
-[ext_resource type="PackedScene" path="res://house.tscn" id="7_house001"]
+[ext_resource type="Texture2D" path="res://art/bg/S01_classroom_morning_bg.png" id="1_bg"]
+[ext_resource type="PackedScene" uid="uid://bvt8qnxwqy3ey" path="res://player.tscn" id="2_player"]
+[ext_resource type="PackedScene" uid="uid://duah71j3glpcq" path="res://npc.tscn" id="3_biu"]
+[ext_resource type="PackedScene" uid="uid://d2u0lp08bk2p2" path="res://dialogue_box.tscn" id="4_dialogue"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wallv"]
-size = Vector2(100, 1900)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_left_wall"]
+size = Vector2(290, 1141)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wallh"]
-size = Vector2(2600, 100)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_right_wall"]
+size = Vector2(400, 1141)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_topwall"]
-size = Vector2(1100, 120)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_top_wall"]
+size = Vector2(1900, 580)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_exit"]
-size = Vector2(200, 120)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bottom_wall"]
+size = Vector2(1900, 170)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_leftwallseg"]
-size = Vector2(100, 800)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_podium"]
+size = Vector2(258, 157)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_leftexit"]
-size = Vector2(20, 200)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_desk_a1"]
+size = Vector2(205, 125)
 
-[node name="Main" type="Node2D"]
-script = ExtResource("6_main001")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_desk_a2"]
+size = Vector2(262, 132)
 
-[node name="Ground" type="ColorRect" parent="."]
-offset_right = 2400.0
-offset_bottom = 1800.0
-color = Color(0.2, 0.6, 0.2, 1)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_desk_a3"]
+size = Vector2(250, 240)
 
-[node name="House1" parent="." instance=ExtResource("7_house001")]
-position = Vector2(300, 200)
-house_width = 200.0
-house_height = 200.0
-interior_scene = "res://house_interior.tscn"
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_desk_b1"]
+size = Vector2(199, 133)
 
-[node name="Tavern" parent="." instance=ExtResource("7_house001")]
-position = Vector2(1750, 200)
-house_width = 250.0
-house_height = 300.0
-house_color = Color(0.45, 0.3, 0.15, 1)
-roof_color = Color(0.3, 0.15, 0.1, 1)
-interior_scene = "res://tavern_interior.tscn"
-sign_text = "Tavern"
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_desk_b2"]
+size = Vector2(218, 152)
 
-[node name="Shop" parent="." instance=ExtResource("7_house001")]
-position = Vector2(300, 700)
-house_width = 200.0
-house_height = 200.0
-house_color = Color(0.7, 0.5, 0.3, 1)
-roof_color = Color(0.5, 0.3, 0.2, 1)
-interior_scene = "res://shop_interior.tscn"
-sign_text = "Weapons Store"
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_desk_b3"]
+size = Vector2(264, 194)
 
-[node name="House2" parent="." instance=ExtResource("7_house001")]
-position = Vector2(1750, 700)
-house_width = 200.0
-house_height = 200.0
-house_color = Color(0.5, 0.4, 0.3, 1)
-roof_color = Color(0.3, 0.2, 0.2, 1)
-interior_scene = "res://house_interior.tscn"
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_desk_b4"]
+size = Vector2(278, 94)
 
-[node name="House3" parent="." instance=ExtResource("7_house001")]
-position = Vector2(300, 1300)
-house_width = 200.0
-house_height = 200.0
-house_color = Color(0.5, 0.35, 0.2, 1)
-roof_color = Color(0.35, 0.2, 0.15, 1)
-interior_scene = "res://house_interior.tscn"
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_desk_c_upper"]
+size = Vector2(235, 265)
 
-[node name="House4" parent="." instance=ExtResource("7_house001")]
-position = Vector2(1750, 1300)
-house_width = 200.0
-house_height = 200.0
-house_color = Color(0.55, 0.4, 0.25, 1)
-roof_color = Color(0.35, 0.25, 0.15, 1)
-interior_scene = "res://house_interior.tscn"
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_desk_c_lower"]
+size = Vector2(265, 190)
 
-[node name="LeftTopWall" type="ColorRect" parent="."]
-offset_right = 1100.0
-offset_bottom = 120.0
-color = Color(0.45, 0.45, 0.45, 1)
+[node name="ClassroomMorning" type="Node2D"]
 
-[node name="RightTopWall" type="ColorRect" parent="."]
-offset_left = 1300.0
-offset_right = 2400.0
-offset_bottom = 120.0
-color = Color(0.45, 0.45, 0.45, 1)
+[node name="Background" type="Node2D" parent="."]
 
-[node name="LeftSideTopWall" type="ColorRect" parent="."]
-offset_right = 120.0
-offset_bottom = 800.0
-color = Color(0.45, 0.45, 0.45, 1)
+[node name="Sprite2D" type="Sprite2D" parent="Background"]
+texture = ExtResource("1_bg")
+position = Vector2(836, 470.5)
 
-[node name="LeftSideBottomWall" type="ColorRect" parent="."]
-offset_top = 1000.0
-offset_right = 120.0
-offset_bottom = 1800.0
-color = Color(0.45, 0.45, 0.45, 1)
+[node name="EnvironmentCollision" type="StaticBody2D" parent="."]
 
-[node name="Player" parent="." instance=ExtResource("1_jsbj5")]
-position = Vector2(1200, 900)
+[node name="LeftWall" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(45, 470.5)
+shape = SubResource("RectangleShape2D_left_wall")
+
+[node name="RightWall" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(1600, 470.5)
+shape = SubResource("RectangleShape2D_right_wall")
+
+[node name="TopWall" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(850, 190)
+shape = SubResource("RectangleShape2D_top_wall")
+
+[node name="BottomWall" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(850, 1015)
+shape = SubResource("RectangleShape2D_bottom_wall")
+
+[node name="Podium" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(739, 416.5)
+shape = SubResource("RectangleShape2D_podium")
+
+[node name="DeskA1" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(302.5, 512.5)
+shape = SubResource("RectangleShape2D_desk_a1")
+
+[node name="DeskA2" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(221, 606)
+shape = SubResource("RectangleShape2D_desk_a2")
+
+[node name="DeskA3" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(125, 760)
+shape = SubResource("RectangleShape2D_desk_a3")
+
+[node name="DeskB1" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(615.5, 508.5)
+shape = SubResource("RectangleShape2D_desk_b1")
+
+[node name="DeskB2" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(585, 618)
+shape = SubResource("RectangleShape2D_desk_b2")
+
+[node name="DeskB3" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(558, 743)
+shape = SubResource("RectangleShape2D_desk_b3")
+
+[node name="DeskB4" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(511, 833)
+shape = SubResource("RectangleShape2D_desk_b4")
+
+[node name="DeskCUpper" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(922.5, 567.5)
+shape = SubResource("RectangleShape2D_desk_c_upper")
+
+[node name="DeskCLower" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(907.5, 785)
+shape = SubResource("RectangleShape2D_desk_c_lower")
+
+[node name="Player" parent="." instance=ExtResource("2_player")]
+position = Vector2(1080, 770)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(0.77, 0.77)
+limit_left = 0
 limit_top = 0
-limit_right = 2400
-limit_bottom = 1800
+limit_right = 1672
+limit_bottom = 941
 
-[node name="NPC" parent="." instance=ExtResource("2_p0dqw")]
-position = Vector2(550, 370)
+[node name="Biu" parent="." instance=ExtResource("3_biu")]
+position = Vector2(1290, 660)
+npc_name = "biu"
+dialogue_lines = Array[String](["作业收得差不多了。", "我还得去办公室一趟。", "你不是也要去拿作业吗？", "走，一起。"])
+interaction_size = Vector2(140, 120)
 
-[node name="Villager2" parent="." instance=ExtResource("2_p0dqw")]
-position = Vector2(800, 1400)
-
-[node name="DialogueBox" parent="." instance=ExtResource("3_1r0fy")]
-
-[node name="Minimap" parent="." instance=ExtResource("4_mm001")]
-
-[node name="FullMap" parent="." instance=ExtResource("5_fm001")]
-
-[node name="Borders" type="StaticBody2D" parent="."]
-
-[node name="LeftWallTop" type="CollisionShape2D" parent="Borders"]
-position = Vector2(-50, 400)
-shape = SubResource("RectangleShape2D_leftwallseg")
-
-[node name="LeftWallBottom" type="CollisionShape2D" parent="Borders"]
-position = Vector2(-50, 1400)
-shape = SubResource("RectangleShape2D_leftwallseg")
-
-[node name="RightWall" type="CollisionShape2D" parent="Borders"]
-position = Vector2(2450, 900)
-shape = SubResource("RectangleShape2D_wallv")
-
-[node name="BottomWall" type="CollisionShape2D" parent="Borders"]
-position = Vector2(1200, 1850)
-shape = SubResource("RectangleShape2D_wallh")
-
-[node name="LeftTopWall" type="CollisionShape2D" parent="Borders"]
-position = Vector2(550, 60)
-shape = SubResource("RectangleShape2D_topwall")
-
-[node name="RightTopWall" type="CollisionShape2D" parent="Borders"]
-position = Vector2(1850, 60)
-shape = SubResource("RectangleShape2D_topwall")
-
-[node name="TopExit" type="Area2D" parent="."]
-position = Vector2(1200, -60)
-
-[node name="TopExitShape" type="CollisionShape2D" parent="TopExit"]
-shape = SubResource("RectangleShape2D_exit")
-
-[node name="LeftExit" type="Area2D" parent="."]
-position = Vector2(-10, 900)
-
-[node name="LeftExitShape" type="CollisionShape2D" parent="LeftExit"]
-shape = SubResource("RectangleShape2D_leftexit")
+[node name="DialogueBox" parent="." instance=ExtResource("4_dialogue")]
