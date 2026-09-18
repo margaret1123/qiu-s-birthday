@@ -69,11 +69,11 @@ Renderer: Compatibility.
 Export: Web only.
 
 Game structure:
-- One persistent Game shell.
-- One current map loaded into a World container.
-- One persistent Player.
-- One persistent UI layer.
-- Shared managers for dialogue, scene changes, and game state.
+- Each story location is a self-contained map scene.
+- Each map instances the shared Player scene and shared UI scenes it needs.
+- Scene changes use Godot's direct `get_tree().change_scene_to_file(...)` flow.
+- `GameState` remains a very small autoload for input locks, shared input actions, and mobile-Web detection.
+- No persistent Game shell or SceneManager is required.
 
 Recommended logical viewport: 640x360, scaled to the browser window while keeping a 16:9 gameplay area.
 
@@ -81,26 +81,28 @@ The project should remain friendly to desktop and mobile browsers.
 
 ## 5. Scene Architecture
 
-Main scene concept:
+The project follows the same simple scene-level pattern used by small Godot town/adventure demos: each location is a complete playable scene.
 
-Game
-- World
-  - CurrentMap
-- Player
-- UI
-  - DialogueUI
-  - ChoiceUI
-  - TouchControls
-  - TransitionOverlay
+Example map scene:
 
-Maps are separate scenes loaded into World.
+S01Classroom
+- Background
+- Static collisions
+- Player (instance of the shared Player scene)
+- NPC / interaction targets
+- DialogueBox
+- Optional mobile controls and orientation overlay
+
+Moving to the next story location uses `get_tree().change_scene_to_file(...)`.
+
+This deliberately avoids a persistent world shell, map manager, spawn manager, or other framework code that the short linear story does not need.
 
 Each map is intentionally simple:
 - One complete background PNG.
 - Static collision shapes placed over walls, desks, counters, railings, and other blocked areas.
-- NPC nodes.
-- Interaction areas.
-- Entrance / exit markers.
+- Shared Player scene instance.
+- NPC / interaction targets.
+- Dialogue UI.
 - Optional cutscene trigger areas.
 
 No TileMap is required.
@@ -155,32 +157,20 @@ Story logic should not be hard-coded into the Player.
 
 ## 8. Dialogue and Choice System
 
-Dialogue should be data-driven rather than embedded throughout GDScript.
+Keep dialogue deliberately small and scene-driven.
 
-Each dialogue event may contain:
-- speaker.
-- portrait key.
-- text.
-- next node.
-- optional choices.
-- optional action after completion.
+Use one shared DialogueBox scene with a small public API:
+- show one or more lines.
+- advance lines.
+- optionally show two choices.
+- emit which choice was selected.
+- emit when the current dialogue sequence finishes.
 
-Example conceptual structure:
-
-event_id: classroom_escape
-speaker: 我
-text: 现在溜出去的话，应该还赶得上……
-choices:
-- text: 一天之计在于晨，回去早读
-  next: classroom_wrong_choice
-- text: 开什么玩笑，食堂甩卤面！
-  next: classroom_go_canteen
+Each map script owns only the tiny amount of story flow needed in that location. Do not add JSON parsing, a dialogue graph engine, or a general-purpose narrative framework unless the real content later proves it necessary.
 
 Choice types needed:
 1. Memory choice: one answer produces a joke/reaction and returns to the intended outcome.
 2. Reconverging choice: both answers have slightly different text but return to the same next story beat.
-
-No general-purpose branching narrative engine is necessary.
 
 ## 9. Game State
 
@@ -198,16 +188,14 @@ If persistence is later needed, only store minimal progress in browser-local sto
 
 ## 10. Scene Transition
 
-SceneManager handles:
-1. Lock input.
-2. Fade to black.
-3. Remove current map.
-4. Load target map.
-5. Move Player to the requested spawn marker.
-6. Fade in.
-7. Restore input.
+Scene transitions are direct and linear.
 
-Transitions should be fast and simple.
+A map may:
+1. Lock input.
+2. Optionally fade to black.
+3. Call `get_tree().change_scene_to_file(target_scene)`.
+
+The destination map defines its own Player start position, so no spawn manager is required for the main linear story.
 
 The electric-bike segment is not player-controlled. It is a short 5-8 second transition/cutscene between the school gate and internet cafe.
 
@@ -330,23 +318,21 @@ res://
 
   scenes/
     core/
-      game.tscn
       player.tscn
-      dialogue_ui.tscn
+    ui/
+      dialogue_box.tscn
       touch_controls.tscn
+      orientation_overlay.tscn
     maps/
       s01_classroom.tscn
-      test_map.tscn
+      test_destination.tscn
 
   scripts/
-    player.gd
-    interaction.gd
-    dialogue_manager.gd
-    scene_manager.gd
     game_state.gd
-
-  data/
-    dialogue/
+    player.gd
+    interaction_target.gd
+    dialogue_box.gd
+    s01_classroom.gd
 ```
 
 The exact file names may change slightly during implementation if Godot conventions make a simpler structure clearer, but the architectural boundaries should remain.
