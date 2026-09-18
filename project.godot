@@ -20,6 +20,3 @@ renderer/rendering_method.mobile="gl_compatibility"
 textures/default_filters/use_nearest_mipmap_filter=false
 textures/canvas_textures/default_texture_filter=0
 
-[autoload]
-
-GameState="*res://scripts/game_state.gd"
