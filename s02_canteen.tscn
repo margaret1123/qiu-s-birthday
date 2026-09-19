@@ -1,11 +1,18 @@
-[gd_scene load_steps=20 format=3 uid="uid://bk1o02vey1hzy"]
+[gd_scene load_steps=33 format=3 uid="uid://bk1o02vey1hzy"]
 
 [ext_resource type="Texture2D" path="res://art/bg/S02_canteen_morning_bg.png" id="1_bg"]
 [ext_resource type="PackedScene" uid="uid://bvt8qnxwqy3ey" path="res://player.tscn" id="2_player"]
+[ext_resource type="PackedScene" uid="uid://duah71j3glpcq" path="res://npc.tscn" id="3_biu"]
 [ext_resource type="PackedScene" uid="uid://d2u0lp08bk2p2" path="res://dialogue_box.tscn" id="4_dialogue"]
 [ext_resource type="PackedScene" uid="uid://cq7x2m4vb9n8t" path="res://choice_box.tscn" id="5_choice"]
 [ext_resource type="PackedScene" uid="uid://d6m8lpzh34r5y" path="res://fade_overlay.tscn" id="6_fade"]
 [ext_resource type="Script" path="res://s02_canteen.gd" id="7_canteengd"]
+[ext_resource type="Texture2D" path="res://art/characters/Biu/有凳子背对着398daf83-38ad-44d7-ba85-dc70b7573d79.png" id="8_qiu_seated_back"]
+[ext_resource type="Texture2D" path="res://art/characters/Biu/坐姿正面a6cbf586-1893-46b9-aee1-d63f2f4fd9f6.png" id="9_biu_seated_front"]
+[ext_resource type="Texture2D" path="res://art/道具/PROP_chicken_lumian.png" id="10_chicken_lumian"]
+[ext_resource type="Texture2D" path="res://art/道具/PROP_zhajiang_lumian.png" id="11_zhajiang_lumian"]
+[ext_resource type="Texture2D" path="res://art/UI/？？？？？da8beeea-8aed-4f98-878f-bf06ce9050d1.png" id="12_question_emote"]
+[ext_resource type="Texture2D" path="res://art/UI/！！！！b83567b8-b2da-4582-a89a-3d073f4ee10f.png" id="13_exclaim_emote"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_left_wall"]
 size = Vector2(110, 941)
@@ -45,6 +52,30 @@ size = Vector2(308, 135)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_table_6"]
 size = Vector2(308, 135)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qiu_seated_back"]
+atlas = ExtResource("8_qiu_seated_back")
+region = Rect2(366, 100, 499, 1109)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_biu_seated_front"]
+atlas = ExtResource("9_biu_seated_front")
+region = Rect2(230, 134, 534, 1305)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_chicken_lumian"]
+atlas = ExtResource("10_chicken_lumian")
+region = Rect2(90, 216, 1074, 902)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_zhajiang_lumian"]
+atlas = ExtResource("11_zhajiang_lumian")
+region = Rect2(135, 306, 978, 766)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_question_emote"]
+atlas = ExtResource("12_question_emote")
+region = Rect2(302, 276, 650, 717)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_exclaim_emote"]
+atlas = ExtResource("13_exclaim_emote")
+region = Rect2(370, 362, 514, 563)
 
 [node name="CanteenMorning" type="Node2D"]
 script = ExtResource("7_canteengd")
@@ -157,6 +188,69 @@ limit_left = 0
 limit_top = 0
 limit_right = 1672
 limit_bottom = 941
+
+[node name="Biu" parent="WorldSort" instance=ExtResource("3_biu")]
+position = Vector2(630, 468)
+npc_name = "biu"
+interaction_offset = Vector2(0, 20)
+interaction_size = Vector2(140, 140)
+
+[node name="MealBiu" type="Node2D" parent="WorldSort"]
+visible = false
+position = Vector2(865, 694)
+
+[node name="Sprite" type="Sprite2D" parent="WorldSort/MealBiu"]
+texture = SubResource("AtlasTexture_biu_seated_front")
+centered = false
+offset = Vector2(-267, -1305)
+scale = Vector2(0.134866, 0.134866)
+
+[node name="MealPlayer" type="Node2D" parent="WorldSort"]
+visible = false
+position = Vector2(857, 805)
+
+[node name="Sprite" type="Sprite2D" parent="WorldSort/MealPlayer"]
+texture = SubResource("AtlasTexture_qiu_seated_back")
+centered = false
+offset = Vector2(-249.5, -1109)
+scale = Vector2(0.158702, 0.158702)
+
+[node name="MealProps" type="Node2D" parent="WorldSort"]
+visible = false
+z_index = 1
+
+[node name="BiuNoodle" type="Sprite2D" parent="WorldSort/MealProps"]
+position = Vector2(792, 676)
+texture = SubResource("AtlasTexture_chicken_lumian")
+centered = false
+offset = Vector2(-537, -902)
+scale = Vector2(0.054004, 0.054004)
+
+[node name="PlayerNoodle" type="Sprite2D" parent="WorldSort/MealProps"]
+position = Vector2(938, 690)
+texture = SubResource("AtlasTexture_zhajiang_lumian")
+centered = false
+offset = Vector2(-489, -766)
+scale = Vector2(0.059305, 0.059305)
+
+[node name="MealEmotes" type="Node2D" parent="WorldSort"]
+z_index = 2
+
+[node name="QuestionEmote" type="Sprite2D" parent="WorldSort/MealEmotes"]
+visible = false
+position = Vector2(857, 622)
+texture = SubResource("AtlasTexture_question_emote")
+centered = false
+offset = Vector2(-325, -717)
+scale = Vector2(0.086154, 0.086154)
+
+[node name="ExclaimEmote" type="Sprite2D" parent="WorldSort/MealEmotes"]
+visible = false
+position = Vector2(865, 512)
+texture = SubResource("AtlasTexture_exclaim_emote")
+centered = false
+offset = Vector2(-257, -563)
+scale = Vector2(0.108949, 0.108949)
 
 [node name="DialogueBox" parent="." instance=ExtResource("4_dialogue")]
 
