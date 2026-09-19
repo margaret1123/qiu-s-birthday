@@ -1,9 +1,22 @@
-[gd_scene load_steps=22 format=3 uid="uid://cm6t4jwq9rz2c"]
+[gd_scene load_steps=27 format=3 uid="uid://cm6t4jwq9rz2c"]
 
 [ext_resource type="Texture2D" path="res://art/bg/S07_return_to_school_bg.png" id="1_bg"]
 [ext_resource type="PackedScene" uid="uid://bvt8qnxwqy3ey" path="res://player.tscn" id="2_player"]
 [ext_resource type="PackedScene" uid="uid://d6m8lpzh34r5y" path="res://fade_overlay.tscn" id="3_fade"]
 [ext_resource type="Script" path="res://s07_return_to_school.gd" id="4_s07gd"]
+[ext_resource type="PackedScene" uid="uid://d2u0lp08bk2p2" path="res://dialogue_box.tscn" id="5_dialogue"]
+[ext_resource type="PackedScene" uid="uid://cq7x2m4vb9n8t" path="res://choice_box.tscn" id="6_choice"]
+[ext_resource type="Texture2D" path="res://art/UI/出口5d5b52f2-3584-4d5c-a5a8-22e98a370f7c.png" id="7_exit_icon"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_exit_icon"]
+atlas = ExtResource("7_exit_icon")
+region = Rect2(352, 346, 550, 553)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_phone_trigger"]
+size = Vector2(320, 170)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_exit_trigger"]
+size = Vector2(240, 150)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_actor"]
 size = Vector2(40, 28)
@@ -159,5 +172,29 @@ color = Color(1, 0.8, 0.2, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldSort/BiuActor"]
 position = Vector2(0, -14)
 shape = SubResource("RectangleShape2D_actor")
+
+[node name="PhoneEventTrigger" type="Area2D" parent="."]
+position = Vector2(940, 675)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PhoneEventTrigger"]
+shape = SubResource("RectangleShape2D_phone_trigger")
+
+[node name="ExitMarker" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1000, 425)
+scale = Vector2(0.14, 0.14)
+texture = SubResource("AtlasTexture_exit_icon")
+
+[node name="ExitTrigger" type="Area2D" parent="."]
+position = Vector2(1000, 495)
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitTrigger"]
+shape = SubResource("RectangleShape2D_exit_trigger")
+
+[node name="DialogueBox" parent="." instance=ExtResource("5_dialogue")]
+
+[node name="ChoiceBox" parent="." instance=ExtResource("6_choice")]
 
 [node name="FadeOverlay" parent="." instance=ExtResource("3_fade")]
