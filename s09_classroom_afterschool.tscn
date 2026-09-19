@@ -194,29 +194,29 @@ texture = ExtResource("1_bg")
 polygon = PackedVector2Array(792, -166, 1032, -180, 1040, 0, 776, 0, 776, -3, 785, -54, 799, -63, 799, -144, 790, -150)
 uv = PackedVector2Array(792, 714, 1032, 700, 1040, 880, 776, 880, 776, 877, 785, 826, 799, 817, 799, 736, 790, 730)
 
-[node name="StudentSeatedA2" type="Sprite2D" parent="WorldSort"]
-position = Vector2(220, 668)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("8_seat_male_a")
-offset = Vector2(0, -93.5)
-
-[node name="StudentSeatedB2" type="Sprite2D" parent="WorldSort"]
-position = Vector2(575, 688)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("9_seat_female_b")
-offset = Vector2(-3, -91.5)
-
 [node name="StudentStandingA" type="Sprite2D" parent="WorldSort"]
 position = Vector2(740, 700)
-scale = Vector2(0.59661, 0.59661)
+scale = Vector2(0.894915, 0.894915)
 texture = ExtResource("10_stand_male_c")
 offset = Vector2(-3, -149)
 
 [node name="StudentStandingB" type="Sprite2D" parent="WorldSort"]
 position = Vector2(755, 860)
-scale = Vector2(0.61324, 0.61324)
+scale = Vector2(0.91986, 0.91986)
 texture = ExtResource("11_stand_female_a")
 offset = Vector2(-3, -144)
+
+[node name="StudentSeatedA3" type="Sprite2D" parent="WorldSort"]
+position = Vector2(115, 761)
+scale = Vector2(1.125, 1.125)
+texture = ExtResource("8_seat_male_a")
+offset = Vector2(0, -93.5)
+
+[node name="StudentSeatedB3" type="Sprite2D" parent="WorldSort"]
+position = Vector2(553, 761)
+scale = Vector2(1.125, 1.125)
+texture = ExtResource("9_seat_female_b")
+offset = Vector2(-3, -91.5)
 
 [node name="BiuActor" type="StaticBody2D" parent="WorldSort"]
 position = Vector2(1120, 878)
@@ -224,7 +224,7 @@ position = Vector2(1120, 878)
 [node name="Visual" type="Node2D" parent="WorldSort/BiuActor"]
 
 [node name="Body" type="AnimatedSprite2D" parent="WorldSort/BiuActor/Visual"]
-scale = Vector2(0.131441, 0.131441)
+scale = Vector2(0.1971615, 0.1971615)
 sprite_frames = ExtResource("7_biu_frames")
 animation = &"idle_down"
 autoplay = "idle_down"

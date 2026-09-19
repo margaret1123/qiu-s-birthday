@@ -183,6 +183,9 @@ offset = Vector2(-3, -96.5)
 [node name="Player" parent="WorldSort" instance=ExtResource("2_player")]
 position = Vector2(500, 850)
 
+[node name="Body" parent="WorldSort/Player" index="0"]
+scale = Vector2(0.267477, 0.267477)
+
 [node name="Camera2D" type="Camera2D" parent="WorldSort/Player"]
 zoom = Vector2(0.77, 0.77)
 limit_left = 0
@@ -194,6 +197,9 @@ limit_bottom = 941
 position = Vector2(650, 600)
 npc_name = "biu"
 interaction_size = Vector2(140, 120)
+
+[node name="Body" parent="WorldSort/Biu" index="0"]
+scale = Vector2(0.131441, 0.131441)
 
 [node name="ExitMarker" type="Sprite2D" parent="."]
 visible = false

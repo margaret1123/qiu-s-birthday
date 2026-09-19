@@ -82,7 +82,7 @@ position = Vector2(800, 840)
 [node name="Visual" type="Node2D" parent="WorldSort/BiuActor"]
 
 [node name="Body" type="AnimatedSprite2D" parent="WorldSort/BiuActor/Visual"]
-scale = Vector2(0.131441, 0.131441)
+scale = Vector2(0.1971615, 0.1971615)
 sprite_frames = ExtResource("8_biu_frames")
 animation = &"idle_down"
 autoplay = "idle_down"
@@ -98,7 +98,7 @@ position = Vector2(1010, 820)
 [node name="Visual" type="Node2D" parent="WorldSort/MaleStudentActor"]
 
 [node name="Body" type="Sprite2D" parent="WorldSort/MaleStudentActor/Visual"]
-scale = Vector2(0.606897, 0.606897)
+scale = Vector2(0.9103455, 0.9103455)
 texture = ExtResource("9_male_student")
 offset = Vector2(-3, -144)
 
@@ -108,13 +108,13 @@ shape = SubResource("RectangleShape2D_actor")
 
 [node name="StudentFarLeft" type="Sprite2D" parent="WorldSort"]
 position = Vector2(350, 905)
-scale = Vector2(0.600683, 0.600683)
+scale = Vector2(0.9010245, 0.9010245)
 texture = ExtResource("10_stand_female_c")
 offset = Vector2(-3, -147)
 
 [node name="StudentFarRight" type="Sprite2D" parent="WorldSort"]
 position = Vector2(1420, 900)
-scale = Vector2(0.59661, 0.59661)
+scale = Vector2(0.894915, 0.894915)
 texture = ExtResource("9_male_student")
 offset = Vector2(-3, -149)
 

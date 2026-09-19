@@ -12,9 +12,11 @@ extends Node2D
 ## shared DialogueBox do all of that; this scene only listens for the end of it,
 ## and the line itself lives on the NPC where S01 keeps hers.
 ##
-## The ending is the photograph. Once the line has been read the picture goes up
-## over the game and the scene stops there: no return to a title, no black, no
-## THE END, and no second conversation.
+## The ending is the photograph, and the line it was read for stays up with it:
+## the picture is the size of the wall it hangs on, not the size of the screen, so
+## it is put up above the box rather than over it. Both are on screen together and
+## the scene stops there: no return to a title, no black, no THE END, and no
+## second conversation.
 
 var _ended := false
 
@@ -31,13 +33,19 @@ func _ready() -> void:
 	_fade.fade_in()
 
 ## The line has been read through. Nothing is said after it and nothing is played
-## after it: the photograph goes straight up over the game and the scene is left
-## standing on it.
+## after it: the photograph goes up, the line stays where it is, and the scene is
+## left standing on the two of them.
 ##
-## The NPC and the player are both switched off first. npc.gd is what would let
-## the line be started again, and a second run would open a DialogueBox behind
-## the photograph - where it can never be seen or closed. The ending has to be
-## the last thing that can happen here.
+## The line is put back deliberately. Reading the last line is what closed the
+## box, and the ending is the last thing worth reading - so it is handed back to
+## the box and then the box is switched off, which leaves it open on screen and
+## unable to be advanced, cancelled or closed. Its layer sits under the
+## photograph's, and the two do not overlap, so neither covers the other.
+##
+## The NPC and the player are switched off for the same reason. npc.gd is what
+## would let the line be started again, and a second run would open a DialogueBox
+## behind the photograph - where it can never be seen or closed. The ending has to
+## be the last thing that can happen here.
 func _on_dialogue_finished() -> void:
 	if _ended:
 		return
@@ -45,3 +53,6 @@ func _on_dialogue_finished() -> void:
 	_biu.set_process(false)
 	_player.set_physics_process(false)
 	_photo.visible = true
+	# Straight from the NPC, so the ending has one copy of the words and not two.
+	_dialogue_box.show_dialogue(_biu.npc_name, _biu.dialogue_lines)
+	_dialogue_box.set_process(false)

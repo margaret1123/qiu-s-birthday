@@ -70,7 +70,7 @@ position = Vector2(640, 734)
 [node name="Visual" type="Node2D" parent="WorldSort/BiuActor"]
 
 [node name="Body" type="AnimatedSprite2D" parent="WorldSort/BiuActor/Visual"]
-scale = Vector2(0.131441, 0.131441)
+scale = Vector2(0.1971615, 0.1971615)
 sprite_frames = ExtResource("5_biu_frames")
 animation = &"idle_down"
 autoplay = "idle_down"

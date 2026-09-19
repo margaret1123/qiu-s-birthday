@@ -205,39 +205,15 @@ texture = ExtResource("1_bg")
 polygon = PackedVector2Array(792, -166, 1032, -180, 1040, 0, 776, 0, 776, -3, 785, -54, 799, -63, 799, -144, 790, -150)
 uv = PackedVector2Array(792, 714, 1032, 700, 1040, 880, 776, 880, 776, 877, 785, 826, 799, 817, 799, 736, 790, 730)
 
-[node name="StudentSeatedA1" type="Sprite2D" parent="WorldSort"]
-position = Vector2(310, 572)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("9_seat_male_a")
-offset = Vector2(0, -93.5)
-
-[node name="StudentSeatedB1" type="Sprite2D" parent="WorldSort"]
-position = Vector2(605, 572)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("10_seat_female_a")
-offset = Vector2(-3, -91.5)
-
-[node name="StudentSeatedA2" type="Sprite2D" parent="WorldSort"]
-position = Vector2(220, 668)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("11_seat_female_b")
-offset = Vector2(-3, -91.5)
-
-[node name="StudentSeatedB2" type="Sprite2D" parent="WorldSort"]
-position = Vector2(575, 688)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("12_seat_male_c")
-offset = Vector2(-2, -94)
-
 [node name="StudentStandingA" type="Sprite2D" parent="WorldSort"]
 position = Vector2(740, 700)
-scale = Vector2(0.59661, 0.59661)
+scale = Vector2(0.894915, 0.894915)
 texture = ExtResource("13_stand_male_b")
 offset = Vector2(0, -149)
 
 [node name="StudentStandingB" type="Sprite2D" parent="WorldSort"]
 position = Vector2(755, 860)
-scale = Vector2(0.600683, 0.600683)
+scale = Vector2(0.9010245, 0.9010245)
 texture = ExtResource("14_stand_female_c")
 offset = Vector2(-3, -147)
 
@@ -250,6 +226,30 @@ limit_left = 0
 limit_top = 0
 limit_right = 1672
 limit_bottom = 941
+
+[node name="StudentSeatedA2" type="Sprite2D" parent="WorldSort"]
+position = Vector2(211, 659)
+scale = Vector2(1.125, 1.125)
+texture = ExtResource("9_seat_male_a")
+offset = Vector2(0, -93.5)
+
+[node name="StudentSeatedB2" type="Sprite2D" parent="WorldSort"]
+position = Vector2(580, 659)
+scale = Vector2(1.125, 1.125)
+texture = ExtResource("10_seat_female_a")
+offset = Vector2(-3, -91.5)
+
+[node name="StudentSeatedA3" type="Sprite2D" parent="WorldSort"]
+position = Vector2(115, 759)
+scale = Vector2(1.125, 1.125)
+texture = ExtResource("11_seat_female_b")
+offset = Vector2(-3, -91.5)
+
+[node name="StudentSeatedB3" type="Sprite2D" parent="WorldSort"]
+position = Vector2(553, 768)
+scale = Vector2(1.125, 1.125)
+texture = ExtResource("12_seat_male_c")
+offset = Vector2(-2, -94)
 
 [node name="Biu" parent="WorldSort" instance=ExtResource("3_biu")]
 position = Vector2(1290, 660)

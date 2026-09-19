@@ -18,7 +18,7 @@ region = Rect2(370, 362, 514, 563)
 script = ExtResource("1_fqxuw")
 
 [node name="Body" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.131441, 0.131441)
+scale = Vector2(0.1971615, 0.1971615)
 sprite_frames = ExtResource("3_biu_frames")
 animation = &"idle_down"
 autoplay = "idle_down"

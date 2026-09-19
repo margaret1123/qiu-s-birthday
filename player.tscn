@@ -11,7 +11,7 @@ size = Vector2(40, 28)
 script = ExtResource("1_8m7yv")
 
 [node name="Body" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.267477, 0.267477)
+scale = Vector2(0.4012155, 0.4012155)
 sprite_frames = ExtResource("3_qiu_frames")
 animation = &"idle_down"
 autoplay = "idle_down"
