@@ -1,0 +1,110 @@
+[gd_scene load_steps=13 format=3 uid="uid://cq3r7d9xw2mn5"]
+
+[ext_resource type="Texture2D" path="res://art/bg/S03_corridor_bg.png" id="1_bg"]
+[ext_resource type="PackedScene" uid="uid://bvt8qnxwqy3ey" path="res://player.tscn" id="2_player"]
+[ext_resource type="PackedScene" uid="uid://d2u0lp08bk2p2" path="res://dialogue_box.tscn" id="3_dialogue"]
+[ext_resource type="PackedScene" uid="uid://cq7x2m4vb9n8t" path="res://choice_box.tscn" id="4_choice"]
+[ext_resource type="PackedScene" uid="uid://d6m8lpzh34r5y" path="res://fade_overlay.tscn" id="5_fade"]
+[ext_resource type="Script" path="res://s03_corridor.gd" id="6_corridorgd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_left_wall"]
+size = Vector2(120, 1060)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_right_wall"]
+size = Vector2(120, 1060)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_top_wall"]
+size = Vector2(2472, 850)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bottom_wall"]
+size = Vector2(2472, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_actor"]
+size = Vector2(40, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tank_trigger"]
+size = Vector2(120, 260)
+
+[node name="CorridorMorning" type="Node2D"]
+script = ExtResource("6_corridorgd")
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Background"]
+texture = ExtResource("1_bg")
+position = Vector2(836, 470.5)
+
+[node name="EnvironmentCollision" type="StaticBody2D" parent="."]
+
+[node name="LeftWall" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(20, 470)
+shape = SubResource("RectangleShape2D_left_wall")
+
+[node name="RightWall" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(1672, 470)
+shape = SubResource("RectangleShape2D_right_wall")
+
+[node name="TopWall" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(836, 265)
+shape = SubResource("RectangleShape2D_top_wall")
+
+[node name="BottomWall" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(836, 941)
+shape = SubResource("RectangleShape2D_bottom_wall")
+
+[node name="WorldSort" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Player" parent="WorldSort" instance=ExtResource("2_player")]
+position = Vector2(180, 872)
+
+[node name="Camera2D" type="Camera2D" parent="WorldSort/Player"]
+zoom = Vector2(0.77, 0.77)
+limit_left = 0
+limit_top = 0
+limit_right = 1672
+limit_bottom = 941
+
+[node name="BiuActor" type="StaticBody2D" parent="WorldSort"]
+position = Vector2(800, 840)
+
+[node name="Visual" type="Node2D" parent="WorldSort/BiuActor"]
+
+[node name="Body" type="ColorRect" parent="WorldSort/BiuActor/Visual"]
+offset_left = -32.0
+offset_top = -176.0
+offset_right = 32.0
+offset_bottom = 0.0
+color = Color(1, 0.8, 0.2, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldSort/BiuActor"]
+position = Vector2(0, -14)
+shape = SubResource("RectangleShape2D_actor")
+
+[node name="MaleStudentActor" type="StaticBody2D" parent="WorldSort"]
+position = Vector2(1010, 820)
+
+[node name="Visual" type="Node2D" parent="WorldSort/MaleStudentActor"]
+
+[node name="Body" type="ColorRect" parent="WorldSort/MaleStudentActor/Visual"]
+offset_left = -32.0
+offset_top = -176.0
+offset_right = 32.0
+offset_bottom = 0.0
+color = Color(0.55, 0.45, 0.85, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldSort/MaleStudentActor"]
+position = Vector2(0, -14)
+shape = SubResource("RectangleShape2D_actor")
+
+[node name="TankEventTrigger" type="Area2D" parent="."]
+position = Vector2(930, 795)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TankEventTrigger"]
+shape = SubResource("RectangleShape2D_tank_trigger")
+
+[node name="DialogueBox" parent="." instance=ExtResource("3_dialogue")]
+
+[node name="ChoiceBox" parent="." instance=ExtResource("4_choice")]
+
+[node name="FadeOverlay" parent="." instance=ExtResource("5_fade")]

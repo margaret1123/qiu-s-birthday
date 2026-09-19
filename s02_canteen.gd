@@ -48,6 +48,11 @@ const AFTER_MEAL_SPAWN := Vector2(800, 852)
 ## Beside the player, in the same open floor and clear of the table.
 const BIU_AFTER_MEAL_POSITION := Vector2(738, 848)
 
+## Where the player stands when S03 opens: the left end of the corridor, on open
+## floor and clear of the tank trigger.
+const S03_SPAWN := Vector2(180, 872)
+const S03_SCENE := "res://s03_corridor.tscn"
+
 ## Biu's opening lines. The choice only opens once all four have been read.
 const COUNTER_LINES: Array[String] = [
 	"走，吃面。",
@@ -121,8 +126,12 @@ var state: FlowState = FlowState.COUNTER
 ## used to swallow the cancel key - see _process.
 var _meal_active := false
 
+var _transitioning := false
+
 @onready var _dialogue_box = $DialogueBox
 @onready var _choice_box = $ChoiceBox
+@onready var _exit_marker: Sprite2D = $ExitMarker
+@onready var _exit_trigger: Area2D = $ExitTrigger
 @onready var _fade = $FadeOverlay
 @onready var _player: CharacterBody2D = $WorldSort/Player
 @onready var _player_body: ColorRect = $WorldSort/Player/Body
@@ -140,6 +149,7 @@ var _meal_active := false
 func _ready() -> void:
 	_dialogue_box.dialogue_finished.connect(_on_dialogue_finished)
 	_choice_box.choice_selected.connect(_on_choice_selected)
+	_exit_trigger.body_entered.connect(_on_exit_entered)
 	_biu.dialogue_lines = COUNTER_LINES
 	_fade.fade_in()
 
@@ -280,3 +290,26 @@ func _finish_meal() -> void:
 	# From here on Biu only has the one line, and the meal cannot replay.
 	_biu.dialogue_lines = POST_MEAL_LINES
 	await _fade.fade_in()
+	# Armed only now that the player has the screen and can see it. They are not
+	# teleported out: the exit appears and they walk to it themselves.
+	_open_exit()
+
+func _open_exit() -> void:
+	_exit_marker.visible = true
+	_exit_trigger.monitoring = true
+
+func _on_exit_entered(body: Node2D) -> void:
+	if _transitioning or not body.is_in_group("player"):
+		return
+	_transitioning = true
+	# Disarm immediately so the body sitting inside the area for the whole fade
+	# cannot start a second transition. Deferred because Area2D refuses this
+	# while an in/out signal is being emitted.
+	_exit_trigger.set_deferred("monitoring", false)
+	# The player keeps their input until the fade is done, so freeze them rather
+	# than letting them walk off during it.
+	_player.set_physics_process(false)
+	await _fade.fade_out()
+	GlobalState.spawn_position = S03_SPAWN
+	# Deferred: never swap scenes from inside a physics callback.
+	get_tree().call_deferred("change_scene_to_file", S03_SCENE)

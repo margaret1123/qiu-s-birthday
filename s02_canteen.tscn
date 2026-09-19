@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://bk1o02vey1hzy"]
+[gd_scene load_steps=36 format=3 uid="uid://bk1o02vey1hzy"]
 
 [ext_resource type="Texture2D" path="res://art/bg/S02_canteen_morning_bg.png" id="1_bg"]
 [ext_resource type="PackedScene" uid="uid://bvt8qnxwqy3ey" path="res://player.tscn" id="2_player"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" path="res://art/道具/PROP_zhajiang_lumian.png" id="11_zhajiang_lumian"]
 [ext_resource type="Texture2D" path="res://art/UI/？？？？？da8beeea-8aed-4f98-878f-bf06ce9050d1.png" id="12_question_emote"]
 [ext_resource type="Texture2D" path="res://art/UI/！！！！b83567b8-b2da-4582-a89a-3d073f4ee10f.png" id="13_exclaim_emote"]
+[ext_resource type="Texture2D" path="res://art/UI/出口5d5b52f2-3584-4d5c-a5a8-22e98a370f7c.png" id="14_exit_icon"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_left_wall"]
 size = Vector2(110, 941)
@@ -76,6 +77,13 @@ region = Rect2(302, 276, 650, 717)
 [sub_resource type="AtlasTexture" id="AtlasTexture_exclaim_emote"]
 atlas = ExtResource("13_exclaim_emote")
 region = Rect2(370, 362, 514, 563)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_exit_icon"]
+atlas = ExtResource("14_exit_icon")
+region = Rect2(352, 346, 550, 553)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_exit_trigger"]
+size = Vector2(100, 80)
 
 [node name="CanteenMorning" type="Node2D"]
 script = ExtResource("7_canteengd")
@@ -251,6 +259,20 @@ texture = SubResource("AtlasTexture_exclaim_emote")
 centered = false
 offset = Vector2(-257, -563)
 scale = Vector2(0.108949, 0.108949)
+
+[node name="ExitMarker" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1600, 790)
+scale = Vector2(0.14, 0.14)
+texture = SubResource("AtlasTexture_exit_icon")
+
+[node name="ExitTrigger" type="Area2D" parent="."]
+position = Vector2(1600, 862)
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitTrigger"]
+shape = SubResource("RectangleShape2D_exit_trigger")
 
 [node name="DialogueBox" parent="." instance=ExtResource("4_dialogue")]
 
