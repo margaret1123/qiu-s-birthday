@@ -1,0 +1,165 @@
+[gd_scene load_steps=20 format=3 uid="uid://bk1o02vey1hzy"]
+
+[ext_resource type="Texture2D" path="res://art/bg/S02_canteen_morning_bg.png" id="1_bg"]
+[ext_resource type="PackedScene" uid="uid://bvt8qnxwqy3ey" path="res://player.tscn" id="2_player"]
+[ext_resource type="PackedScene" uid="uid://d2u0lp08bk2p2" path="res://dialogue_box.tscn" id="4_dialogue"]
+[ext_resource type="PackedScene" uid="uid://cq7x2m4vb9n8t" path="res://choice_box.tscn" id="5_choice"]
+[ext_resource type="PackedScene" uid="uid://d6m8lpzh34r5y" path="res://fade_overlay.tscn" id="6_fade"]
+[ext_resource type="Script" path="res://s02_canteen.gd" id="7_canteengd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_left_wall"]
+size = Vector2(110, 941)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_right_wall"]
+size = Vector2(22, 941)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_top_wall"]
+size = Vector2(1672, 390)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bottom_wall"]
+size = Vector2(1672, 41)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_recycle_bin"]
+size = Vector2(62, 98)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tray_return"]
+size = Vector2(128, 176)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_trolley"]
+size = Vector2(76, 134)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_table_1"]
+size = Vector2(288, 119)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_table_2"]
+size = Vector2(288, 119)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_table_3"]
+size = Vector2(288, 119)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_table_4"]
+size = Vector2(308, 135)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_table_5"]
+size = Vector2(308, 135)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_table_6"]
+size = Vector2(308, 135)
+
+[node name="CanteenMorning" type="Node2D"]
+script = ExtResource("7_canteengd")
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Background"]
+texture = ExtResource("1_bg")
+position = Vector2(836, 470.5)
+
+[node name="EnvironmentCollision" type="StaticBody2D" parent="."]
+
+[node name="LeftWall" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(55, 470.5)
+shape = SubResource("RectangleShape2D_left_wall")
+
+[node name="RightWall" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(1661, 470.5)
+shape = SubResource("RectangleShape2D_right_wall")
+
+[node name="TopWall" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(836, 195)
+shape = SubResource("RectangleShape2D_top_wall")
+
+[node name="BottomWall" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(836, 920.5)
+shape = SubResource("RectangleShape2D_bottom_wall")
+
+[node name="RecycleBin" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(1471, 349)
+shape = SubResource("RectangleShape2D_recycle_bin")
+
+[node name="TrayReturn" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(1558, 360)
+shape = SubResource("RectangleShape2D_tray_return")
+
+[node name="Trolley" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(1634, 465)
+shape = SubResource("RectangleShape2D_trolley")
+
+[node name="Table1" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(372, 502.5)
+shape = SubResource("RectangleShape2D_table_1")
+
+[node name="Table2" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(863, 502.5)
+shape = SubResource("RectangleShape2D_table_2")
+
+[node name="Table3" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(1347, 502.5)
+shape = SubResource("RectangleShape2D_table_3")
+
+[node name="Table4" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(327, 708.5)
+shape = SubResource("RectangleShape2D_table_4")
+
+[node name="Table5" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(865, 708.5)
+shape = SubResource("RectangleShape2D_table_5")
+
+[node name="Table6" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(1407, 708.5)
+shape = SubResource("RectangleShape2D_table_6")
+
+[node name="WorldSort" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Table1Occluder" type="Polygon2D" parent="WorldSort"]
+position = Vector2(0, 503)
+texture = ExtResource("1_bg")
+polygon = PackedVector2Array(228, -60, 516, -60, 516, 0, 228, 0)
+uv = PackedVector2Array(228, 443, 516, 443, 516, 503, 228, 503)
+
+[node name="Table2Occluder" type="Polygon2D" parent="WorldSort"]
+position = Vector2(0, 503)
+texture = ExtResource("1_bg")
+polygon = PackedVector2Array(719, -60, 1007, -60, 1007, 0, 719, 0)
+uv = PackedVector2Array(719, 443, 1007, 443, 1007, 503, 719, 503)
+
+[node name="Table3Occluder" type="Polygon2D" parent="WorldSort"]
+position = Vector2(0, 503)
+texture = ExtResource("1_bg")
+polygon = PackedVector2Array(1203, -60, 1491, -60, 1491, 0, 1203, 0)
+uv = PackedVector2Array(1203, 443, 1491, 443, 1491, 503, 1203, 503)
+
+[node name="Table4Occluder" type="Polygon2D" parent="WorldSort"]
+position = Vector2(0, 703)
+texture = ExtResource("1_bg")
+polygon = PackedVector2Array(173, -58, 481, -58, 481, 0, 173, 0)
+uv = PackedVector2Array(173, 645, 481, 645, 481, 703, 173, 703)
+
+[node name="Table5Occluder" type="Polygon2D" parent="WorldSort"]
+position = Vector2(0, 703)
+texture = ExtResource("1_bg")
+polygon = PackedVector2Array(711, -58, 1019, -58, 1019, 0, 711, 0)
+uv = PackedVector2Array(711, 645, 1019, 645, 1019, 703, 711, 703)
+
+[node name="Table6Occluder" type="Polygon2D" parent="WorldSort"]
+position = Vector2(0, 703)
+texture = ExtResource("1_bg")
+polygon = PackedVector2Array(1253, -58, 1561, -58, 1561, 0, 1253, 0)
+uv = PackedVector2Array(1253, 645, 1561, 645, 1561, 703, 1253, 703)
+
+[node name="Player" parent="WorldSort" instance=ExtResource("2_player")]
+position = Vector2(585, 862)
+
+[node name="Camera2D" type="Camera2D" parent="WorldSort/Player"]
+zoom = Vector2(0.77, 0.77)
+limit_left = 0
+limit_top = 0
+limit_right = 1672
+limit_bottom = 941
+
+[node name="DialogueBox" parent="." instance=ExtResource("4_dialogue")]
+
+[node name="ChoiceBox" parent="." instance=ExtResource("5_choice")]
+
+[node name="FadeOverlay" parent="." instance=ExtResource("6_fade")]

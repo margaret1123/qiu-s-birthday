@@ -1,11 +1,20 @@
-[gd_scene load_steps=21 format=3 uid="uid://clp20p1awv1h8"]
+[gd_scene load_steps=25 format=3 uid="uid://clp20p1awv1h8"]
 
 [ext_resource type="Texture2D" path="res://art/bg/S01_classroom_morning_bg.png" id="1_bg"]
 [ext_resource type="PackedScene" uid="uid://bvt8qnxwqy3ey" path="res://player.tscn" id="2_player"]
 [ext_resource type="PackedScene" uid="uid://duah71j3glpcq" path="res://npc.tscn" id="3_biu"]
 [ext_resource type="PackedScene" uid="uid://d2u0lp08bk2p2" path="res://dialogue_box.tscn" id="4_dialogue"]
-[ext_resource type="Script" path="res://main.gd" id="5_maingd"]
+[ext_resource type="Script" path="res://s01_classroom.gd" id="5_maingd"]
 [ext_resource type="PackedScene" uid="uid://cq7x2m4vb9n8t" path="res://choice_box.tscn" id="6_choice"]
+[ext_resource type="Texture2D" path="res://art/UI/出口5d5b52f2-3584-4d5c-a5a8-22e98a370f7c.png" id="7_exit_icon"]
+[ext_resource type="PackedScene" uid="uid://d6m8lpzh34r5y" path="res://fade_overlay.tscn" id="8_fade"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_exit_icon"]
+atlas = ExtResource("7_exit_icon")
+region = Rect2(352, 346, 550, 553)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_exit_trigger"]
+size = Vector2(100, 80)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_left_wall"]
 size = Vector2(290, 1141)
@@ -195,6 +204,22 @@ npc_name = "biu"
 dialogue_lines = Array[String](["作业收得差不多了。", "我还得去办公室一趟。", "你不是也要去拿作业吗？", "走，一起。"])
 interaction_size = Vector2(140, 120)
 
+[node name="ExitMarker" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1392, 458)
+scale = Vector2(0.14, 0.14)
+texture = SubResource("AtlasTexture_exit_icon")
+
+[node name="ExitTrigger" type="Area2D" parent="."]
+position = Vector2(1385, 512)
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitTrigger"]
+shape = SubResource("RectangleShape2D_exit_trigger")
+
 [node name="DialogueBox" parent="." instance=ExtResource("4_dialogue")]
 
 [node name="ChoiceBox" parent="." instance=ExtResource("6_choice")]
+
+[node name="FadeOverlay" parent="." instance=ExtResource("8_fade")]

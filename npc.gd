@@ -26,9 +26,15 @@ func _ready():
 
 func _process(_delta):
 	if player_nearby and Input.is_action_just_pressed("interact"):
+		# An open prompt owns the interact key - the same press that confirms a
+		# choice or advances a line must not also start a conversation behind it.
 		var dialogue_box = get_tree().get_first_node_in_group("dialogue_box")
-		if dialogue_box and not dialogue_box.is_open():
-			interact()
+		var choice_box = get_tree().get_first_node_in_group("choice_box")
+		if dialogue_box and dialogue_box.is_open():
+			return
+		if choice_box and choice_box.is_open():
+			return
+		interact()
 
 func _on_body_entered(body):
 	if body.name == "Player":
