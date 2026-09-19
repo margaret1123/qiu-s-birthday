@@ -1,9 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://dqh7m4xp1vrye"]
+[gd_scene load_steps=24 format=3 uid="uid://dqh7m4xp1vrye"]
 
 [ext_resource type="Texture2D" path="res://art/bg/S09_classroom_afterschool_bg.png" id="1_bg"]
 [ext_resource type="PackedScene" uid="uid://bvt8qnxwqy3ey" path="res://player.tscn" id="2_player"]
 [ext_resource type="PackedScene" uid="uid://d6m8lpzh34r5y" path="res://fade_overlay.tscn" id="3_fade"]
 [ext_resource type="Script" path="res://s09_classroom_afterschool.gd" id="4_s09gd"]
+[ext_resource type="PackedScene" uid="uid://d2u0lp08bk2p2" path="res://dialogue_box.tscn" id="5_dialogue"]
+[ext_resource type="Texture2D" path="res://art/UI/出口5d5b52f2-3584-4d5c-a5a8-22e98a370f7c.png" id="6_exit_icon"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_left_wall"]
 size = Vector2(290, 1141)
@@ -46,6 +48,16 @@ size = Vector2(235, 265)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_desk_c_lower"]
 size = Vector2(265, 190)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_actor"]
+size = Vector2(40, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_exit_icon"]
+atlas = ExtResource("6_exit_icon")
+region = Rect2(352, 346, 550, 553)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_exit_trigger"]
+size = Vector2(100, 80)
 
 [node name="ClassroomAfterSchool" type="Node2D"]
 script = ExtResource("4_s09gd")
@@ -177,6 +189,22 @@ texture = ExtResource("1_bg")
 polygon = PackedVector2Array(792, -166, 1032, -180, 1040, 0, 776, 0, 776, -3, 785, -54, 799, -63, 799, -144, 790, -150)
 uv = PackedVector2Array(792, 714, 1032, 700, 1040, 880, 776, 880, 776, 877, 785, 826, 799, 817, 799, 736, 790, 730)
 
+[node name="BiuActor" type="StaticBody2D" parent="WorldSort"]
+position = Vector2(1120, 878)
+
+[node name="Visual" type="Node2D" parent="WorldSort/BiuActor"]
+
+[node name="Body" type="ColorRect" parent="WorldSort/BiuActor/Visual"]
+offset_left = -32.0
+offset_top = -176.0
+offset_right = 32.0
+offset_bottom = 0.0
+color = Color(1, 0.8, 0.2, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldSort/BiuActor"]
+position = Vector2(0, -14)
+shape = SubResource("RectangleShape2D_actor")
+
 [node name="Player" parent="WorldSort" instance=ExtResource("2_player")]
 position = Vector2(712, 878)
 
@@ -186,5 +214,21 @@ limit_left = 0
 limit_top = 0
 limit_right = 1672
 limit_bottom = 941
+
+[node name="ExitMarker" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1392, 458)
+scale = Vector2(0.14, 0.14)
+texture = SubResource("AtlasTexture_exit_icon")
+
+[node name="ExitTrigger" type="Area2D" parent="."]
+position = Vector2(1385, 512)
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitTrigger"]
+shape = SubResource("RectangleShape2D_exit_trigger")
+
+[node name="DialogueBox" parent="." instance=ExtResource("5_dialogue")]
 
 [node name="FadeOverlay" parent="." instance=ExtResource("3_fade")]

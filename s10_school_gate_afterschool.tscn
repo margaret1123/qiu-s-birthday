@@ -1,0 +1,112 @@
+[gd_scene load_steps=13 format=3 uid="uid://wclph1ziooxte"]
+
+[ext_resource type="Texture2D" path="res://art/bg/S04_school_gate_noon_bg.png" id="1_bg"]
+[ext_resource type="PackedScene" uid="uid://bvt8qnxwqy3ey" path="res://player.tscn" id="2_player"]
+[ext_resource type="PackedScene" uid="uid://d6m8lpzh34r5y" path="res://fade_overlay.tscn" id="3_fade"]
+[ext_resource type="Script" path="res://s10_school_gate_afterschool.gd" id="4_s10gd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_left_wall"]
+size = Vector2(300, 2000)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_right_wall"]
+size = Vector2(400, 2000)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_top_wall"]
+size = Vector2(2400, 1400)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bottom_wall"]
+size = Vector2(2400, 400)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bike_shed"]
+size = Vector2(472, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tree_left"]
+size = Vector2(300, 280)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tree_right"]
+size = Vector2(202, 241)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gate_exit"]
+size = Vector2(200, 34)
+
+[node name="SchoolGateAfterSchool" type="Node2D"]
+script = ExtResource("4_s10gd")
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Background"]
+texture = ExtResource("1_bg")
+position = Vector2(836, 470.5)
+
+[node name="EnvironmentCollision" type="StaticBody2D" parent="."]
+
+[node name="LeftWall" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(-110, 470)
+shape = SubResource("RectangleShape2D_left_wall")
+
+[node name="RightWall" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(1832, 470)
+shape = SubResource("RectangleShape2D_right_wall")
+
+[node name="TopWall" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(836, -80)
+shape = SubResource("RectangleShape2D_top_wall")
+
+[node name="BottomWall" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(836, 1125)
+shape = SubResource("RectangleShape2D_bottom_wall")
+
+[node name="BikeShed" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(1436, 620)
+shape = SubResource("RectangleShape2D_bike_shed")
+
+[node name="TreeLeft" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(142, 800)
+shape = SubResource("RectangleShape2D_tree_left")
+
+[node name="TreeRight" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(1571, 820.5)
+shape = SubResource("RectangleShape2D_tree_right")
+
+[node name="WorldSort" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Player" parent="WorldSort" instance=ExtResource("2_player")]
+position = Vector2(700, 888)
+
+[node name="Camera2D" type="Camera2D" parent="WorldSort/Player"]
+zoom = Vector2(0.77, 0.77)
+limit_left = 0
+limit_top = 0
+limit_right = 1672
+limit_bottom = 941
+
+[node name="GateExitTrigger" type="Area2D" parent="."]
+position = Vector2(790, 629)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GateExitTrigger"]
+shape = SubResource("RectangleShape2D_gate_exit")
+
+[node name="YearOverlay" type="CanvasLayer" parent="."]
+visible = false
+layer = 110
+
+[node name="YearLabel" type="Label" parent="YearOverlay"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -80.0
+offset_right = 200.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 96
+text = "2026"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FadeOverlay" parent="." instance=ExtResource("3_fade")]

@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://jvpovjvynxghw"]
+
+[ext_resource type="Texture2D" path="res://art/bg/S11_2026_birthday_bg1.png" id="1_bg"]
+[ext_resource type="PackedScene" uid="uid://d2u0lp08bk2p2" path="res://dialogue_box.tscn" id="2_dialogue"]
+[ext_resource type="PackedScene" uid="uid://d6m8lpzh34r5y" path="res://fade_overlay.tscn" id="3_fade"]
+[ext_resource type="Script" path="res://s11_2026_birthday.gd" id="4_s11gd"]
+[ext_resource type="Texture2D" path="res://art/characters/Biu/手捧蛋糕fca3bd65-10d1-4990-9f38-ea455deabe78.png" id="5_cake"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cake"]
+atlas = ExtResource("5_cake")
+region = Rect2(268, 100, 452, 1320)
+
+[node name="Birthday2026" type="Node2D"]
+script = ExtResource("4_s11gd")
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Background"]
+texture = ExtResource("1_bg")
+position = Vector2(836, 470.5)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(836, 470.5)
+zoom = Vector2(0.77, 0.77)
+limit_left = 0
+limit_top = 0
+limit_right = 1672
+limit_bottom = 941
+
+[node name="WorldSort" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="BiuActor" type="StaticBody2D" parent="WorldSort"]
+position = Vector2(836, 650)
+
+[node name="Visual" type="Node2D" parent="WorldSort/BiuActor"]
+
+[node name="Cake" type="Sprite2D" parent="WorldSort/BiuActor/Visual"]
+position = Vector2(0, -92.4)
+scale = Vector2(0.14, 0.14)
+texture = SubResource("AtlasTexture_cake")
+
+[node name="DialogueBox" parent="." instance=ExtResource("2_dialogue")]
+
+[node name="FadeOverlay" parent="." instance=ExtResource("3_fade")]
