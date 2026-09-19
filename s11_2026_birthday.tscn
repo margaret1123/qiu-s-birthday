@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://jvpovjvynxghw"]
+[gd_scene load_steps=14 format=3 uid="uid://jvpovjvynxghw"]
 
 [ext_resource type="Texture2D" path="res://art/bg/S11_2026_birthday_bg1.png" id="1_bg"]
 [ext_resource type="PackedScene" uid="uid://d2u0lp08bk2p2" path="res://dialogue_box.tscn" id="2_dialogue"]
@@ -13,6 +13,18 @@
 atlas = ExtResource("5_cake")
 region = Rect2(268, 100, 452, 1320)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_left_wall"]
+size = Vector2(200, 3000)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_right_wall"]
+size = Vector2(200, 3000)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_top_wall"]
+size = Vector2(3600, 200)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bottom_wall"]
+size = Vector2(3600, 200)
+
 [node name="Birthday2026" type="Node2D"]
 script = ExtResource("4_s11gd")
 
@@ -21,6 +33,24 @@ script = ExtResource("4_s11gd")
 [node name="Sprite2D" type="Sprite2D" parent="Background"]
 texture = ExtResource("1_bg")
 position = Vector2(836, 470.5)
+
+[node name="EnvironmentCollision" type="StaticBody2D" parent="."]
+
+[node name="LeftWall" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(-100, 470.5)
+shape = SubResource("RectangleShape2D_left_wall")
+
+[node name="RightWall" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(1772, 470.5)
+shape = SubResource("RectangleShape2D_right_wall")
+
+[node name="TopWall" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(836, -100)
+shape = SubResource("RectangleShape2D_top_wall")
+
+[node name="BottomWall" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(836, 1041)
+shape = SubResource("RectangleShape2D_bottom_wall")
 
 [node name="WorldSort" type="Node2D" parent="."]
 y_sort_enabled = true
