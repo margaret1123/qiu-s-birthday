@@ -38,6 +38,18 @@ func _physics_process(_delta):
 	# Move
 	move_and_slide()
 
+## The scene owns the player's physics: every scripted event switches it off to
+## hold the player still while it plays. The animation lives in _physics_process,
+## so it stops with the physics - and a walk cycle left on screen keeps stepping
+## under a body that can no longer move. Idle processing is not switched off, and
+## is what puts the feet back under them.
+##
+## It only guards the state the physics cannot speak for. While the physics is
+## on, this does nothing at all, so the walking rules stay in one place.
+func _process(_delta: float) -> void:
+	if not is_physics_processing():
+		_animate(Vector2.ZERO)
+
 ## Reads the movement the controller asked for, not the velocity move_and_slide
 ## left behind: a body pressed against a wall has that velocity eaten by the
 ## collision, and standing still there is not what the player is doing.

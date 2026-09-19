@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://jvpovjvynxghw"]
+[gd_scene load_steps=15 format=3 uid="uid://jvpovjvynxghw"]
 
 [ext_resource type="Texture2D" path="res://art/bg/S11_2026_birthday_bg1.png" id="1_bg"]
 [ext_resource type="PackedScene" uid="uid://d2u0lp08bk2p2" path="res://dialogue_box.tscn" id="2_dialogue"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" path="res://art/characters/Biu/手捧蛋糕fca3bd65-10d1-4990-9f38-ea455deabe78.png" id="5_cake"]
 [ext_resource type="PackedScene" uid="uid://duah71j3glpcq" path="res://npc.tscn" id="6_biu"]
 [ext_resource type="PackedScene" uid="uid://bvt8qnxwqy3ey" path="res://player.tscn" id="7_player"]
+[ext_resource type="SpriteFrames" path="res://art/characters/Qiu/adult_qiu_sprite_frames.tres" id="9_adult_qiu"]
 [ext_resource type="Texture2D" path="res://art/characters/Qiu/8ca86dba-a402-4ad9-a816-7868dcbec2f1.png" id="8_photo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cake"]
@@ -73,6 +74,13 @@ texture = SubResource("AtlasTexture_cake")
 
 [node name="Player" parent="WorldSort" instance=ExtResource("7_player")]
 position = Vector2(836, 880)
+
+[node name="Body" parent="WorldSort/Player" index="0"]
+scale = Vector2(0.263769, 0.263769)
+sprite_frames = ExtResource("9_adult_qiu")
+animation = &"idle_down"
+autoplay = "idle_down"
+offset = Vector2(0, -340)
 
 [node name="Camera2D" type="Camera2D" parent="WorldSort/Player"]
 zoom = Vector2(0.77, 0.77)
