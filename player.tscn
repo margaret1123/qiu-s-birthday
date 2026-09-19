@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bvt8qnxwqy3ey"]
+[gd_scene load_steps=5 format=3 uid="uid://bvt8qnxwqy3ey"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_8m7yv"]
 [ext_resource type="PackedScene" path="res://mobile_controls.tscn" id="2_mobile"]
+[ext_resource type="SpriteFrames" path="res://art/characters/Qiu/qiu_sprite_frames.tres" id="3_qiu_frames"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3vwql"]
 size = Vector2(40, 28)
@@ -9,12 +10,12 @@ size = Vector2(40, 28)
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_8m7yv")
 
-[node name="Body" type="ColorRect" parent="."]
-offset_left = -32.0
-offset_top = -176.0
-offset_right = 32.0
-offset_bottom = 0.0
-color = Color(0.2, 0.6, 1, 1)
+[node name="Body" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.267477, 0.267477)
+sprite_frames = ExtResource("3_qiu_frames")
+animation = &"idle_down"
+autoplay = "idle_down"
+offset = Vector2(0, -332)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -14)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cq3r7d9xw2mn5"]
+[gd_scene load_steps=18 format=3 uid="uid://cq3r7d9xw2mn5"]
 
 [ext_resource type="Texture2D" path="res://art/bg/S03_corridor_bg.png" id="1_bg"]
 [ext_resource type="PackedScene" uid="uid://bvt8qnxwqy3ey" path="res://player.tscn" id="2_player"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://d6m8lpzh34r5y" path="res://fade_overlay.tscn" id="5_fade"]
 [ext_resource type="Script" path="res://s03_corridor.gd" id="6_corridorgd"]
 [ext_resource type="Texture2D" path="res://art/UI/出口5d5b52f2-3584-4d5c-a5a8-22e98a370f7c.png" id="7_exit_icon"]
+[ext_resource type="SpriteFrames" path="res://art/characters/Biu/biu_sprite_frames.tres" id="8_biu_frames"]
+[ext_resource type="Texture2D" path="res://art/characters/students/CHAR_STUDENTS_30_transparent_sprites/male_A/male_A_stand_front.png" id="9_male_student"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_left_wall"]
 size = Vector2(120, 1060)
@@ -78,12 +80,12 @@ position = Vector2(800, 840)
 
 [node name="Visual" type="Node2D" parent="WorldSort/BiuActor"]
 
-[node name="Body" type="ColorRect" parent="WorldSort/BiuActor/Visual"]
-offset_left = -32.0
-offset_top = -176.0
-offset_right = 32.0
-offset_bottom = 0.0
-color = Color(1, 0.8, 0.2, 1)
+[node name="Body" type="AnimatedSprite2D" parent="WorldSort/BiuActor/Visual"]
+scale = Vector2(0.131441, 0.131441)
+sprite_frames = ExtResource("8_biu_frames")
+animation = &"idle_down"
+autoplay = "idle_down"
+offset = Vector2(0, -670)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldSort/BiuActor"]
 position = Vector2(0, -14)
@@ -94,12 +96,10 @@ position = Vector2(1010, 820)
 
 [node name="Visual" type="Node2D" parent="WorldSort/MaleStudentActor"]
 
-[node name="Body" type="ColorRect" parent="WorldSort/MaleStudentActor/Visual"]
-offset_left = -32.0
-offset_top = -176.0
-offset_right = 32.0
-offset_bottom = 0.0
-color = Color(0.55, 0.45, 0.85, 1)
+[node name="Body" type="Sprite2D" parent="WorldSort/MaleStudentActor/Visual"]
+scale = Vector2(0.606897, 0.606897)
+texture = ExtResource("9_male_student")
+offset = Vector2(-3, -144)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldSort/MaleStudentActor"]
 position = Vector2(0, -14)

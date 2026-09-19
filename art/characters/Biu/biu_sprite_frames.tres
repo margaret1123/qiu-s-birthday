@@ -1,0 +1,40 @@
+[gd_resource type="SpriteFrames" load_steps=9 format=3]
+[ext_resource type="Texture2D" path="res://art/characters/Biu/无书包正29e79e97-e403-410b-97f1-57b5aa26f662.png" id="1_front_01"]
+[ext_resource type="Texture2D" path="res://art/characters/Biu/无书包背7c2e8275-c6ba-445a-92ba-858ec029137b.png" id="2_back_01"]
+[ext_resource type="Texture2D" path="res://art/characters/Biu/无书包左49af22f4-209e-4625-95b5-eefe145958d8.png" id="3_left_01"]
+[ext_resource type="Texture2D" path="res://art/characters/Biu/无书包右692bdf67-db0b-4b6e-bdd7-652c8e5b9d5b.png" id="4_right_01"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_front_01"]
+atlas = ExtResource("1_front_01")
+region = Rect2(228, 97, 525, 1386)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_back_01"]
+atlas = ExtResource("2_back_01")
+region = Rect2(259, 79, 504, 1340)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_left_01"]
+atlas = ExtResource("3_left_01")
+region = Rect2(299, 115, 469, 1340)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_right_01"]
+atlas = ExtResource("4_right_01")
+region = Rect2(252, 102, 470, 1340)
+
+[resource]
+animations = [{"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_front_01")
+}], "loop": false, "name": &"idle_down", "speed": 5.0
+}, {"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_back_01")
+}], "loop": false, "name": &"idle_up", "speed": 5.0
+}, {"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_left_01")
+}], "loop": false, "name": &"idle_left", "speed": 5.0
+}, {"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_right_01")
+}], "loop": false, "name": &"idle_right", "speed": 5.0
+}]

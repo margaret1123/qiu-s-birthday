@@ -1,0 +1,152 @@
+[gd_resource type="SpriteFrames" load_steps=33 format=3]
+[ext_resource type="Texture2D" path="res://art/characters/Qiu/MC_walkcycle_all_facings_x4_cropped/front/front_01.png" id="1_front_01"]
+[ext_resource type="Texture2D" path="res://art/characters/Qiu/MC_walkcycle_all_facings_x4_cropped/front/front_02.png" id="2_front_02"]
+[ext_resource type="Texture2D" path="res://art/characters/Qiu/MC_walkcycle_all_facings_x4_cropped/front/front_03.png" id="3_front_03"]
+[ext_resource type="Texture2D" path="res://art/characters/Qiu/MC_walkcycle_all_facings_x4_cropped/front/front_04.png" id="4_front_04"]
+[ext_resource type="Texture2D" path="res://art/characters/Qiu/MC_walkcycle_all_facings_x4_cropped/back/back_01.png" id="5_back_01"]
+[ext_resource type="Texture2D" path="res://art/characters/Qiu/MC_walkcycle_all_facings_x4_cropped/back/back_02.png" id="6_back_02"]
+[ext_resource type="Texture2D" path="res://art/characters/Qiu/MC_walkcycle_all_facings_x4_cropped/back/back_03.png" id="7_back_03"]
+[ext_resource type="Texture2D" path="res://art/characters/Qiu/MC_walkcycle_all_facings_x4_cropped/back/back_04.png" id="8_back_04"]
+[ext_resource type="Texture2D" path="res://art/characters/Qiu/MC_walkcycle_all_facings_x4_cropped/left/left_01.png" id="9_left_01"]
+[ext_resource type="Texture2D" path="res://art/characters/Qiu/MC_walkcycle_all_facings_x4_cropped/left/left_02.png" id="10_left_02"]
+[ext_resource type="Texture2D" path="res://art/characters/Qiu/MC_walkcycle_all_facings_x4_cropped/left/left_03.png" id="11_left_03"]
+[ext_resource type="Texture2D" path="res://art/characters/Qiu/MC_walkcycle_all_facings_x4_cropped/left/left_04.png" id="12_left_04"]
+[ext_resource type="Texture2D" path="res://art/characters/Qiu/MC_walkcycle_all_facings_x4_cropped/right/right_01.png" id="13_right_01"]
+[ext_resource type="Texture2D" path="res://art/characters/Qiu/MC_walkcycle_all_facings_x4_cropped/right/right_02.png" id="14_right_02"]
+[ext_resource type="Texture2D" path="res://art/characters/Qiu/MC_walkcycle_all_facings_x4_cropped/right/right_03.png" id="15_right_03"]
+[ext_resource type="Texture2D" path="res://art/characters/Qiu/MC_walkcycle_all_facings_x4_cropped/right/right_04.png" id="16_right_04"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_front_01"]
+atlas = ExtResource("1_front_01")
+region = Rect2(145, 29, 380, 664)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_front_02"]
+atlas = ExtResource("2_front_02")
+region = Rect2(113, 29, 375, 664)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_front_03"]
+atlas = ExtResource("3_front_03")
+region = Rect2(65, 29, 376, 664)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_front_04"]
+atlas = ExtResource("4_front_04")
+region = Rect2(30, 29, 374, 666)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_back_01"]
+atlas = ExtResource("5_back_01")
+region = Rect2(133, 9, 340, 700)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_back_02"]
+atlas = ExtResource("6_back_02")
+region = Rect2(90, 9, 330, 700)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_back_03"]
+atlas = ExtResource("7_back_03")
+region = Rect2(78, 9, 344, 700)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_back_04"]
+atlas = ExtResource("8_back_04")
+region = Rect2(40, 9, 336, 690)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_left_01"]
+atlas = ExtResource("9_left_01")
+region = Rect2(82, 34, 386, 664)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_left_02"]
+atlas = ExtResource("10_left_02")
+region = Rect2(100, 33, 355, 664)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_left_03"]
+atlas = ExtResource("11_left_03")
+region = Rect2(64, 34, 391, 664)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_left_04"]
+atlas = ExtResource("12_left_04")
+region = Rect2(83, 34, 350, 664)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_right_01"]
+atlas = ExtResource("13_right_01")
+region = Rect2(98, 4, 391, 664)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_right_02"]
+atlas = ExtResource("14_right_02")
+region = Rect2(84, 4, 342, 664)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_right_03"]
+atlas = ExtResource("15_right_03")
+region = Rect2(56, 4, 401, 664)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_right_04"]
+atlas = ExtResource("16_right_04")
+region = Rect2(59, 4, 343, 664)
+
+[resource]
+animations = [{"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_front_04")
+}], "loop": false, "name": &"idle_down", "speed": 5.0
+}, {"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_front_01")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_front_02")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_front_03")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_front_04")
+}], "loop": true, "name": &"walk_down", "speed": 8.0
+}, {"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_back_04")
+}], "loop": false, "name": &"idle_up", "speed": 5.0
+}, {"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_back_01")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_back_02")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_back_03")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_back_04")
+}], "loop": true, "name": &"walk_up", "speed": 8.0
+}, {"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_left_04")
+}], "loop": false, "name": &"idle_left", "speed": 5.0
+}, {"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_left_01")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_left_02")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_left_03")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_left_04")
+}], "loop": true, "name": &"walk_left", "speed": 8.0
+}, {"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_right_04")
+}], "loop": false, "name": &"idle_right", "speed": 5.0
+}, {"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_right_01")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_right_02")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_right_03")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_right_04")
+}], "loop": true, "name": &"walk_right", "speed": 8.0
+}]

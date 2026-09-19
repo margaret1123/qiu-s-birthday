@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dq7w3kx9np4ra"]
+[gd_scene load_steps=19 format=3 uid="uid://dq7w3kx9np4ra"]
 
 [ext_resource type="Texture2D" path="res://art/bg/S04_school_gate_noon_bg.png" id="1_bg"]
 [ext_resource type="PackedScene" uid="uid://bvt8qnxwqy3ey" path="res://player.tscn" id="2_player"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://d6m8lpzh34r5y" path="res://fade_overlay.tscn" id="5_fade"]
 [ext_resource type="Script" path="res://s04_school_gate_noon.gd" id="6_gategd"]
 [ext_resource type="Texture2D" path="res://art/characters/Qiu/骑车载人92fd5a18-4cdc-43dc-af65-79dbc466f207.png" id="7_ride"]
+[ext_resource type="SpriteFrames" path="res://art/characters/Biu/biu_sprite_frames.tres" id="8_biu_frames"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_left_wall"]
 size = Vector2(300, 2000)
@@ -96,12 +97,12 @@ position = Vector2(880, 688)
 
 [node name="Visual" type="Node2D" parent="WorldSort/BiuActor"]
 
-[node name="Body" type="ColorRect" parent="WorldSort/BiuActor/Visual"]
-offset_left = -32.0
-offset_top = -176.0
-offset_right = 32.0
-offset_bottom = 0.0
-color = Color(1, 0.8, 0.2, 1)
+[node name="Body" type="AnimatedSprite2D" parent="WorldSort/BiuActor/Visual"]
+scale = Vector2(0.131441, 0.131441)
+sprite_frames = ExtResource("8_biu_frames")
+animation = &"idle_down"
+autoplay = "idle_down"
+offset = Vector2(0, -670)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldSort/BiuActor"]
 position = Vector2(0, -14)

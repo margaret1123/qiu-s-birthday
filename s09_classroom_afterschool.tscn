@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dqh7m4xp1vrye"]
+[gd_scene load_steps=25 format=3 uid="uid://dqh7m4xp1vrye"]
 
 [ext_resource type="Texture2D" path="res://art/bg/S09_classroom_afterschool_bg.png" id="1_bg"]
 [ext_resource type="PackedScene" uid="uid://bvt8qnxwqy3ey" path="res://player.tscn" id="2_player"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://s09_classroom_afterschool.gd" id="4_s09gd"]
 [ext_resource type="PackedScene" uid="uid://d2u0lp08bk2p2" path="res://dialogue_box.tscn" id="5_dialogue"]
 [ext_resource type="Texture2D" path="res://art/UI/出口5d5b52f2-3584-4d5c-a5a8-22e98a370f7c.png" id="6_exit_icon"]
+[ext_resource type="SpriteFrames" path="res://art/characters/Biu/biu_sprite_frames.tres" id="7_biu_frames"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_left_wall"]
 size = Vector2(290, 1141)
@@ -194,12 +195,12 @@ position = Vector2(1120, 878)
 
 [node name="Visual" type="Node2D" parent="WorldSort/BiuActor"]
 
-[node name="Body" type="ColorRect" parent="WorldSort/BiuActor/Visual"]
-offset_left = -32.0
-offset_top = -176.0
-offset_right = 32.0
-offset_bottom = 0.0
-color = Color(1, 0.8, 0.2, 1)
+[node name="Body" type="AnimatedSprite2D" parent="WorldSort/BiuActor/Visual"]
+scale = Vector2(0.131441, 0.131441)
+sprite_frames = ExtResource("7_biu_frames")
+animation = &"idle_down"
+autoplay = "idle_down"
+offset = Vector2(0, -670)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldSort/BiuActor"]
 position = Vector2(0, -14)
