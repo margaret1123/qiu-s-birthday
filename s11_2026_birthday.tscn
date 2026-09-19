@@ -1,10 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://jvpovjvynxghw"]
+[gd_scene load_steps=10 format=3 uid="uid://jvpovjvynxghw"]
 
 [ext_resource type="Texture2D" path="res://art/bg/S11_2026_birthday_bg1.png" id="1_bg"]
 [ext_resource type="PackedScene" uid="uid://d2u0lp08bk2p2" path="res://dialogue_box.tscn" id="2_dialogue"]
 [ext_resource type="PackedScene" uid="uid://d6m8lpzh34r5y" path="res://fade_overlay.tscn" id="3_fade"]
 [ext_resource type="Script" path="res://s11_2026_birthday.gd" id="4_s11gd"]
 [ext_resource type="Texture2D" path="res://art/characters/Biu/手捧蛋糕fca3bd65-10d1-4990-9f38-ea455deabe78.png" id="5_cake"]
+[ext_resource type="PackedScene" uid="uid://duah71j3glpcq" path="res://npc.tscn" id="6_biu"]
+[ext_resource type="PackedScene" uid="uid://bvt8qnxwqy3ey" path="res://player.tscn" id="7_player"]
+[ext_resource type="Texture2D" path="res://art/characters/Qiu/8ca86dba-a402-4ad9-a816-7868dcbec2f1.png" id="8_photo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cake"]
 atlas = ExtResource("5_cake")
@@ -19,19 +22,17 @@ script = ExtResource("4_s11gd")
 texture = ExtResource("1_bg")
 position = Vector2(836, 470.5)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(836, 470.5)
-zoom = Vector2(0.77, 0.77)
-limit_left = 0
-limit_top = 0
-limit_right = 1672
-limit_bottom = 941
-
 [node name="WorldSort" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="BiuActor" type="StaticBody2D" parent="WorldSort"]
+[node name="BiuActor" parent="WorldSort" instance=ExtResource("6_biu")]
 position = Vector2(836, 650)
+npc_name = "biu"
+dialogue_lines = Array[String](["亲爱的宝贝，生日快乐，认识你20年超级快乐~！山海相逢，此生有幸~超爱你哟~！(•ө•)♡"])
+interaction_size = Vector2(140, 120)
+
+[node name="Body" parent="WorldSort/BiuActor" index="0"]
+visible = false
 
 [node name="Visual" type="Node2D" parent="WorldSort/BiuActor"]
 
@@ -40,6 +41,31 @@ position = Vector2(0, -92.4)
 scale = Vector2(0.14, 0.14)
 texture = SubResource("AtlasTexture_cake")
 
+[node name="Player" parent="WorldSort" instance=ExtResource("7_player")]
+position = Vector2(836, 880)
+
+[node name="Camera2D" type="Camera2D" parent="WorldSort/Player"]
+zoom = Vector2(0.77, 0.77)
+limit_left = 0
+limit_top = 0
+limit_right = 1672
+limit_bottom = 941
+
 [node name="DialogueBox" parent="." instance=ExtResource("2_dialogue")]
+
+[node name="FinalPhoto" type="CanvasLayer" parent="."]
+visible = false
+layer = 130
+
+[node name="Photo" type="TextureRect" parent="FinalPhoto"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("8_photo")
+expand_mode = 1
+stretch_mode = 0
 
 [node name="FadeOverlay" parent="." instance=ExtResource("3_fade")]
