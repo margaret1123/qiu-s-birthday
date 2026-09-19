@@ -12,6 +12,10 @@ extends Node2D
 ## an NPC, so there is nothing to talk to again afterwards. That is also why a
 ## cancelled dialogue segment is put straight back up instead of being skipped -
 ## see _await_segment_closed.
+##
+## Once the event is over the corridor's right-hand exit is armed. The player is
+## not teleported to it: they walk there themselves, which is what makes leaving
+## the teaching building their own move rather than a cutscene beat.
 
 enum FlowState {
 	WALKING,      ## Free walk; the trigger has not fired yet.
@@ -78,7 +82,15 @@ const LAUGH_BOUNCE_HEIGHT := -3.0
 const LAUGH_BEAT := 0.09
 const LAUGH_BOUNCES := 2
 
+## Where the player stands when S04 opens: on the schoolyard pavement below the
+## gate, well outside the gate trigger's reach, so they walk to the gate
+## themselves. Biu is not standing on it either.
+const S04_SPAWN := Vector2(700, 888)
+const S04_SCENE := "res://s04_school_gate_noon.tscn"
+
 var state: FlowState = FlowState.WALKING
+
+var _transitioning := false
 
 ## The segment currently on screen, kept so a cancelled one can be put back.
 var _segment_speaker := ""
@@ -93,11 +105,14 @@ var _segment_finished := false
 @onready var _player: CharacterBody2D = $WorldSort/Player
 @onready var _biu_visual: Node2D = $WorldSort/BiuActor/Visual
 @onready var _trigger: Area2D = $TankEventTrigger
+@onready var _exit_marker: Sprite2D = $ExitMarker
+@onready var _exit_trigger: Area2D = $ExitTrigger
 
 func _ready() -> void:
 	_dialogue_box.dialogue_finished.connect(_on_segment_finished)
 	_choice_box.choice_selected.connect(_on_choice_selected)
 	_trigger.body_entered.connect(_on_trigger_entered)
+	_exit_trigger.body_entered.connect(_on_exit_entered)
 	# Straight back into the walk from the canteen - no time-skip caption here,
 	# this one is continuous with S02.
 	_fade.fade_in()
@@ -168,6 +183,30 @@ func _finish_event() -> void:
 	state = FlowState.COMPLETED
 	# The trigger stays disarmed, so the event cannot replay.
 	_player.set_physics_process(true)
+	# Armed only now that the event is over and the player has the screen back.
+	# Before this it is invisible and not monitoring, so the event cannot be
+	# walked out of and the exit cannot be reached early.
+	_open_exit()
+
+func _open_exit() -> void:
+	_exit_marker.visible = true
+	_exit_trigger.monitoring = true
+
+func _on_exit_entered(body: Node2D) -> void:
+	if _transitioning or not body.is_in_group("player"):
+		return
+	_transitioning = true
+	# Disarm immediately so the body sitting inside the area for the whole fade
+	# cannot start a second transition. Deferred because Area2D refuses this
+	# while an in/out signal is being emitted.
+	_exit_trigger.set_deferred("monitoring", false)
+	# The player keeps their input until the fade is done, so freeze them rather
+	# than letting them walk off during it.
+	_player.set_physics_process(false)
+	await _fade.fade_out()
+	GlobalState.spawn_position = S04_SPAWN
+	# Deferred: never swap scenes from inside a physics callback.
+	get_tree().call_deferred("change_scene_to_file", S04_SCENE)
 
 ## Opens one DialogueBox segment and waits a frame so the box is really up before
 ## anything polls it. Deferred so the press that opened it is not read again by

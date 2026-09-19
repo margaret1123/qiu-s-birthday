@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cq3r7d9xw2mn5"]
+[gd_scene load_steps=16 format=3 uid="uid://cq3r7d9xw2mn5"]
 
 [ext_resource type="Texture2D" path="res://art/bg/S03_corridor_bg.png" id="1_bg"]
 [ext_resource type="PackedScene" uid="uid://bvt8qnxwqy3ey" path="res://player.tscn" id="2_player"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cq7x2m4vb9n8t" path="res://choice_box.tscn" id="4_choice"]
 [ext_resource type="PackedScene" uid="uid://d6m8lpzh34r5y" path="res://fade_overlay.tscn" id="5_fade"]
 [ext_resource type="Script" path="res://s03_corridor.gd" id="6_corridorgd"]
+[ext_resource type="Texture2D" path="res://art/UI/出口5d5b52f2-3584-4d5c-a5a8-22e98a370f7c.png" id="7_exit_icon"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_left_wall"]
 size = Vector2(120, 1060)
@@ -24,6 +25,13 @@ size = Vector2(40, 28)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tank_trigger"]
 size = Vector2(120, 260)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_exit_icon"]
+atlas = ExtResource("7_exit_icon")
+region = Rect2(352, 346, 550, 553)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_exit_trigger"]
+size = Vector2(100, 80)
 
 [node name="CorridorMorning" type="Node2D"]
 script = ExtResource("6_corridorgd")
@@ -102,6 +110,20 @@ position = Vector2(930, 795)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TankEventTrigger"]
 shape = SubResource("RectangleShape2D_tank_trigger")
+
+[node name="ExitMarker" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1555, 800)
+scale = Vector2(0.14, 0.14)
+texture = SubResource("AtlasTexture_exit_icon")
+
+[node name="ExitTrigger" type="Area2D" parent="."]
+position = Vector2(1555, 858)
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitTrigger"]
+shape = SubResource("RectangleShape2D_exit_trigger")
 
 [node name="DialogueBox" parent="." instance=ExtResource("3_dialogue")]
 
