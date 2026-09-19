@@ -1,0 +1,188 @@
+[gd_scene load_steps=25 format=3 uid="uid://bn3p9xr6wt2ha"]
+
+[ext_resource type="Texture2D" path="res://art/bg/S06_cybercafe_interior_bg.png" id="1_bg"]
+[ext_resource type="PackedScene" uid="uid://bvt8qnxwqy3ey" path="res://player.tscn" id="2_player"]
+[ext_resource type="PackedScene" uid="uid://duah71j3glpcq" path="res://npc.tscn" id="3_biu"]
+[ext_resource type="PackedScene" uid="uid://d2u0lp08bk2p2" path="res://dialogue_box.tscn" id="4_dialogue"]
+[ext_resource type="PackedScene" uid="uid://cq7x2m4vb9n8t" path="res://choice_box.tscn" id="5_choice"]
+[ext_resource type="PackedScene" uid="uid://d6m8lpzh34r5y" path="res://fade_overlay.tscn" id="6_fade"]
+[ext_resource type="Script" path="res://s06_cybercafe_interior.gd" id="7_s06gd"]
+[ext_resource type="Texture2D" path="res://art/UI/出口5d5b52f2-3584-4d5c-a5a8-22e98a370f7c.png" id="8_exit_icon"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_exit_icon"]
+atlas = ExtResource("8_exit_icon")
+region = Rect2(352, 346, 550, 553)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_exit_trigger"]
+size = Vector2(130, 52)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_left_wall"]
+size = Vector2(200, 1600)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_right_wall"]
+size = Vector2(140, 1600)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_top_wall"]
+size = Vector2(2000, 500)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bottom_wall"]
+size = Vector2(2000, 160)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_counter"]
+size = Vector2(290, 262)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_back_fixtures"]
+size = Vector2(394, 250)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_workstation"]
+size = Vector2(101, 210)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_middle_row"]
+size = Vector2(372, 270)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bottom_row"]
+size = Vector2(537, 196)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_right_block"]
+size = Vector2(390, 554)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_left_block"]
+size = Vector2(140, 640)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_left_top_row"]
+size = Vector2(300, 210)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pillar"]
+size = Vector2(146, 502)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_clutter_box"]
+size = Vector2(52, 146)
+
+[node name="CybercafeInterior" type="Node2D"]
+script = ExtResource("7_s06gd")
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Background"]
+texture = ExtResource("1_bg")
+position = Vector2(836, 470.5)
+
+[node name="EnvironmentCollision" type="StaticBody2D" parent="."]
+
+[node name="LeftWall" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(-60, 470)
+shape = SubResource("RectangleShape2D_left_wall")
+
+[node name="RightWall" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(1650, 470)
+shape = SubResource("RectangleShape2D_right_wall")
+
+[node name="TopWall" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(836, 85)
+shape = SubResource("RectangleShape2D_top_wall")
+
+[node name="BottomWall" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(836, 1000)
+shape = SubResource("RectangleShape2D_bottom_wall")
+
+[node name="Counter" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(540, 370)
+shape = SubResource("RectangleShape2D_counter")
+
+[node name="BackFixtures" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(882, 375)
+shape = SubResource("RectangleShape2D_back_fixtures")
+
+[node name="WorkstationDesk" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(454.5, 585)
+shape = SubResource("RectangleShape2D_workstation")
+
+[node name="MiddleDeskRow" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(891, 618)
+shape = SubResource("RectangleShape2D_middle_row")
+
+[node name="BottomDeskRow" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(826.5, 843)
+shape = SubResource("RectangleShape2D_bottom_row")
+
+[node name="RightDeskBlock" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(1402, 664)
+shape = SubResource("RectangleShape2D_right_block")
+
+[node name="LeftDeskBlock" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(70, 620)
+shape = SubResource("RectangleShape2D_left_block")
+
+[node name="LeftTopDeskRow" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(150, 420)
+shape = SubResource("RectangleShape2D_left_top_row")
+
+[node name="Pillar" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(320, 690)
+shape = SubResource("RectangleShape2D_pillar")
+
+[node name="ClutterBox" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(426, 852)
+shape = SubResource("RectangleShape2D_clutter_box")
+
+[node name="WorldSort" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="WorkstationOccluder" type="Polygon2D" parent="WorldSort"]
+position = Vector2(0, 740)
+texture = ExtResource("1_bg")
+polygon = PackedVector2Array(460, -270, 520, -270, 520, 0, 460, 0)
+uv = PackedVector2Array(460, 470, 520, 470, 520, 740, 460, 740)
+
+[node name="MidDeskOccluder" type="Polygon2D" parent="WorldSort"]
+position = Vector2(0, 755)
+texture = ExtResource("1_bg")
+polygon = PackedVector2Array(690, -275, 770, -275, 770, 0, 690, 0)
+uv = PackedVector2Array(690, 480, 770, 480, 770, 755, 690, 755)
+
+[node name="BottomDeskOccluder" type="Polygon2D" parent="WorldSort"]
+position = Vector2(0, 941)
+texture = ExtResource("1_bg")
+polygon = PackedVector2Array(545, -196, 660, -196, 660, 0, 545, 0)
+uv = PackedVector2Array(545, 745, 660, 745, 660, 941, 545, 941)
+
+[node name="PillarOccluder" type="Polygon2D" parent="WorldSort"]
+position = Vector2(0, 941)
+texture = ExtResource("1_bg")
+polygon = PackedVector2Array(300, -501, 402, -501, 402, 0, 300, 0)
+uv = PackedVector2Array(300, 440, 402, 440, 402, 941, 300, 941)
+
+[node name="Player" parent="WorldSort" instance=ExtResource("2_player")]
+position = Vector2(500, 850)
+
+[node name="Camera2D" type="Camera2D" parent="WorldSort/Player"]
+zoom = Vector2(0.77, 0.77)
+limit_left = 0
+limit_top = 0
+limit_right = 1672
+limit_bottom = 941
+
+[node name="Biu" parent="WorldSort" instance=ExtResource("3_biu")]
+position = Vector2(650, 600)
+npc_name = "biu"
+interaction_size = Vector2(140, 120)
+
+[node name="ExitMarker" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(497, 895)
+scale = Vector2(0.14, 0.14)
+texture = SubResource("AtlasTexture_exit_icon")
+
+[node name="ExitTrigger" type="Area2D" parent="."]
+position = Vector2(497, 908)
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitTrigger"]
+shape = SubResource("RectangleShape2D_exit_trigger")
+
+[node name="DialogueBox" parent="." instance=ExtResource("4_dialogue")]
+
+[node name="ChoiceBox" parent="." instance=ExtResource("5_choice")]
+
+[node name="FadeOverlay" parent="." instance=ExtResource("6_fade")]

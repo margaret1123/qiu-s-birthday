@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cn5vy8tm2b6qe"]
+[gd_scene load_steps=11 format=3 uid="uid://cn5vy8tm2b6qe"]
 
 [ext_resource type="Texture2D" path="res://art/bg/S05_cybercafe_exterior_bg.png" id="1_bg"]
 [ext_resource type="PackedScene" uid="uid://bvt8qnxwqy3ey" path="res://player.tscn" id="2_player"]
@@ -19,6 +19,9 @@ size = Vector2(2400, 400)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_actor"]
 size = Vector2(40, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_entrance"]
+size = Vector2(140, 90)
 
 [node name="CybercafeExterior" type="Node2D"]
 script = ExtResource("4_extgd")
@@ -75,5 +78,12 @@ color = Color(1, 0.8, 0.2, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldSort/BiuActor"]
 position = Vector2(0, -14)
 shape = SubResource("RectangleShape2D_actor")
+
+[node name="EntranceTrigger" type="Area2D" parent="."]
+position = Vector2(645, 695)
+monitoring = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EntranceTrigger"]
+shape = SubResource("RectangleShape2D_entrance")
 
 [node name="FadeOverlay" parent="." instance=ExtResource("3_fade")]

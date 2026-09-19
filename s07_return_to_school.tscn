@@ -1,0 +1,163 @@
+[gd_scene load_steps=22 format=3 uid="uid://cm6t4jwq9rz2c"]
+
+[ext_resource type="Texture2D" path="res://art/bg/S07_return_to_school_bg.png" id="1_bg"]
+[ext_resource type="PackedScene" uid="uid://bvt8qnxwqy3ey" path="res://player.tscn" id="2_player"]
+[ext_resource type="PackedScene" uid="uid://d6m8lpzh34r5y" path="res://fade_overlay.tscn" id="3_fade"]
+[ext_resource type="Script" path="res://s07_return_to_school.gd" id="4_s07gd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_actor"]
+size = Vector2(40, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_left_wall"]
+size = Vector2(160, 1600)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_right_wall"]
+size = Vector2(200, 1600)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_top_wall"]
+size = Vector2(2000, 620)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bottom_wall"]
+size = Vector2(2000, 180)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_left_shop"]
+size = Vector2(260, 350)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_left_freezer"]
+size = Vector2(194, 160)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_left_crates"]
+size = Vector2(100, 120)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_left_tree"]
+size = Vector2(110, 210)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_left_pole"]
+size = Vector2(80, 300)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_left_scooter"]
+size = Vector2(140, 150)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_left_bin"]
+size = Vector2(45, 70)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_left_sign_wall"]
+size = Vector2(170, 130)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_right_shop"]
+size = Vector2(390, 500)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_right_plants"]
+size = Vector2(110, 400)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_right_sign_board"]
+size = Vector2(180, 240)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_right_shop_lower"]
+size = Vector2(300, 240)
+
+[node name="ReturnToSchool" type="Node2D"]
+script = ExtResource("4_s07gd")
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Background"]
+texture = ExtResource("1_bg")
+position = Vector2(836, 470.5)
+
+[node name="EnvironmentCollision" type="StaticBody2D" parent="."]
+
+[node name="LeftWall" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(-80, 470)
+shape = SubResource("RectangleShape2D_left_wall")
+
+[node name="RightWall" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(1730, 470)
+shape = SubResource("RectangleShape2D_right_wall")
+
+[node name="TopWall" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(836, 120)
+shape = SubResource("RectangleShape2D_top_wall")
+
+[node name="BottomWall" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(836, 1030)
+shape = SubResource("RectangleShape2D_bottom_wall")
+
+[node name="LeftShop" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(130, 425)
+shape = SubResource("RectangleShape2D_left_shop")
+
+[node name="LeftFreezer" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(137, 670)
+shape = SubResource("RectangleShape2D_left_freezer")
+
+[node name="LeftCrates" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(50, 710)
+shape = SubResource("RectangleShape2D_left_crates")
+
+[node name="LeftTree" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(525, 585)
+shape = SubResource("RectangleShape2D_left_tree")
+
+[node name="LeftPole" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(640, 550)
+shape = SubResource("RectangleShape2D_left_pole")
+
+[node name="LeftScooter" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(600, 585)
+shape = SubResource("RectangleShape2D_left_scooter")
+
+[node name="LeftBin" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(422, 625)
+shape = SubResource("RectangleShape2D_left_bin")
+
+[node name="LeftSignWall" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(745, 405)
+shape = SubResource("RectangleShape2D_left_sign_wall")
+
+[node name="RightShop" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(1480, 440)
+shape = SubResource("RectangleShape2D_right_shop")
+
+[node name="RightPlants" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(1350, 580)
+shape = SubResource("RectangleShape2D_right_plants")
+
+[node name="RightSignBoard" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(1555, 680)
+shape = SubResource("RectangleShape2D_right_sign_board")
+
+[node name="RightShopLower" type="CollisionShape2D" parent="EnvironmentCollision"]
+position = Vector2(1530, 830)
+shape = SubResource("RectangleShape2D_right_shop_lower")
+
+[node name="WorldSort" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Player" parent="WorldSort" instance=ExtResource("2_player")]
+position = Vector2(760, 880)
+
+[node name="Camera2D" type="Camera2D" parent="WorldSort/Player"]
+zoom = Vector2(0.77, 0.77)
+limit_left = 0
+limit_top = 0
+limit_right = 1672
+limit_bottom = 941
+
+[node name="BiuActor" type="StaticBody2D" parent="WorldSort"]
+position = Vector2(870, 880)
+
+[node name="Visual" type="Node2D" parent="WorldSort/BiuActor"]
+
+[node name="Body" type="ColorRect" parent="WorldSort/BiuActor/Visual"]
+offset_left = -32.0
+offset_top = -176.0
+offset_right = 32.0
+offset_bottom = 0.0
+color = Color(1, 0.8, 0.2, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldSort/BiuActor"]
+position = Vector2(0, -14)
+shape = SubResource("RectangleShape2D_actor")
+
+[node name="FadeOverlay" parent="." instance=ExtResource("3_fade")]
