@@ -206,15 +206,15 @@ scale = Vector2(0.91986, 0.91986)
 texture = ExtResource("11_stand_female_a")
 offset = Vector2(-3, -144)
 
-[node name="StudentSeatedA3" type="Sprite2D" parent="WorldSort"]
-position = Vector2(115, 761)
-scale = Vector2(1.125, 1.125)
+[node name="StudentSeatedA2" type="Sprite2D" parent="WorldSort"]
+position = Vector2(211, 771)
+scale = Vector2(1.6875, 1.6875)
 texture = ExtResource("8_seat_male_a")
 offset = Vector2(0, -93.5)
 
-[node name="StudentSeatedB3" type="Sprite2D" parent="WorldSort"]
-position = Vector2(553, 761)
-scale = Vector2(1.125, 1.125)
+[node name="StudentSeatedB2" type="Sprite2D" parent="WorldSort"]
+position = Vector2(580, 760)
+scale = Vector2(1.6875, 1.6875)
 texture = ExtResource("9_seat_female_b")
 offset = Vector2(-3, -91.5)
 

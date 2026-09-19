@@ -227,29 +227,29 @@ limit_top = 0
 limit_right = 1672
 limit_bottom = 941
 
-[node name="StudentSeatedA2" type="Sprite2D" parent="WorldSort"]
-position = Vector2(211, 659)
-scale = Vector2(1.125, 1.125)
+[node name="StudentSeatedA1" type="Sprite2D" parent="WorldSort"]
+position = Vector2(288, 674)
+scale = Vector2(1.6875, 1.6875)
 texture = ExtResource("9_seat_male_a")
 offset = Vector2(0, -93.5)
 
-[node name="StudentSeatedB2" type="Sprite2D" parent="WorldSort"]
-position = Vector2(580, 659)
-scale = Vector2(1.125, 1.125)
+[node name="StudentSeatedB1" type="Sprite2D" parent="WorldSort"]
+position = Vector2(612, 677)
+scale = Vector2(1.6875, 1.6875)
+texture = ExtResource("12_seat_male_c")
+offset = Vector2(-2, -94)
+
+[node name="StudentSeatedA2" type="Sprite2D" parent="WorldSort"]
+position = Vector2(211, 764)
+scale = Vector2(1.6875, 1.6875)
 texture = ExtResource("10_seat_female_a")
 offset = Vector2(-3, -91.5)
 
-[node name="StudentSeatedA3" type="Sprite2D" parent="WorldSort"]
-position = Vector2(115, 759)
-scale = Vector2(1.125, 1.125)
+[node name="StudentSeatedB2" type="Sprite2D" parent="WorldSort"]
+position = Vector2(580, 760)
+scale = Vector2(1.6875, 1.6875)
 texture = ExtResource("11_seat_female_b")
 offset = Vector2(-3, -91.5)
-
-[node name="StudentSeatedB3" type="Sprite2D" parent="WorldSort"]
-position = Vector2(553, 768)
-scale = Vector2(1.125, 1.125)
-texture = ExtResource("12_seat_male_c")
-offset = Vector2(-2, -94)
 
 [node name="Biu" parent="WorldSort" instance=ExtResource("3_biu")]
 position = Vector2(1290, 660)
