@@ -1,19 +1,31 @@
-[gd_scene load_steps=2 format=3 uid="uid://d2u0lp08bk2p2"]
+[gd_scene load_steps=4 format=3 uid="uid://d2u0lp08bk2p2"]
 
 [ext_resource type="Script" path="res://dialogue_box.gd" id="1_g22nj"]
+[ext_resource type="Texture2D" path="res://art/UI/UI_dialogue_box.png" id="2_frame"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_frame"]
+atlas = ExtResource("2_frame")
+region = Rect2(29, 111, 2117, 509)
 
 [node name="DialogueBox" type="CanvasLayer"]
 layer = 20
 script = ExtResource("1_g22nj")
 
-[node name="Panel" type="Panel" parent="."]
-anchors_preset = 12
+[node name="Panel" type="TextureRect" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
 anchor_top = 1.0
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-offset_top = -200.0
+offset_left = -417.5
+offset_top = -219.0
+offset_right = 417.5
+offset_bottom = -18.0
 grow_horizontal = 2
 grow_vertical = 0
+texture = SubResource("AtlasTexture_frame")
+expand_mode = 1
+stretch_mode = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel"]
 layout_mode = 1
@@ -22,22 +34,28 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
+theme_override_constants/margin_left = 57
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 20
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 0
 
 [node name="NameLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(194, 37)
 layout_mode = 2
+size_flags_horizontal = 0
 theme_override_colors/font_color = Color(1, 0.8, 0.2, 1)
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 22
 text = "NPC Name"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="TextLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 18
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 22
 text = "Dialogue text goes here..."
 autowrap_mode = 3

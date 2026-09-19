@@ -18,12 +18,3 @@ color = Color(0.2, 0.6, 1, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -14)
 shape = SubResource("RectangleShape2D_3vwql")
-
-[node name="InteractIndicator" type="Label" parent="."]
-visible = false
-offset_left = -8.0
-offset_top = -206.0
-offset_right = 24.0
-offset_bottom = -182.0
-text = "!"
-theme_override_font_sizes/font_size = 24
