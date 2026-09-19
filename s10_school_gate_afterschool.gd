@@ -13,6 +13,13 @@ extends Node2D
 ##
 ## S04's collision, camera and world size are reused exactly as they were. It is
 ## the same gate; only what is behind it has changed.
+##
+## The time of day is the one thing added on top, and it is a single scene-local
+## CanvasModulate: the same gate at the end of the day rather than at noon. It is
+## a colour multiply over this scene's own canvas and nothing else - it does not
+## reach the FadeOverlay or the YearOverlay, which are their own layers, so the
+## black and the year stay exactly as black and as white as S10 needs them to be.
+## There is no day/night system and nothing outside this scene knows about it.
 
 enum FlowState {
 	WALKING,  ## Free walk; the gate has not been stepped through yet.

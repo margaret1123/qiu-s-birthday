@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cm6t4jwq9rz2c"]
+[gd_scene load_steps=31 format=3 uid="uid://cm6t4jwq9rz2c"]
 
 [ext_resource type="Texture2D" path="res://art/bg/S07_return_to_school_bg.png" id="1_bg"]
 [ext_resource type="PackedScene" uid="uid://bvt8qnxwqy3ey" path="res://player.tscn" id="2_player"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://cq7x2m4vb9n8t" path="res://choice_box.tscn" id="6_choice"]
 [ext_resource type="Texture2D" path="res://art/UI/出口5d5b52f2-3584-4d5c-a5a8-22e98a370f7c.png" id="7_exit_icon"]
 [ext_resource type="SpriteFrames" path="res://art/characters/Biu/biu_sprite_frames.tres" id="8_biu_frames"]
+[ext_resource type="Texture2D" path="res://art/characters/students/CHAR_STUDENTS_30_transparent_sprites/male_A/male_A_stand_front.png" id="9_stand_male_a"]
+[ext_resource type="Texture2D" path="res://art/characters/students/CHAR_STUDENTS_30_transparent_sprites/female_B/female_B_stand_front.png" id="10_stand_female_b"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_exit_icon"]
 atlas = ExtResource("7_exit_icon")
@@ -173,6 +175,18 @@ offset = Vector2(0, -670)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldSort/BiuActor"]
 position = Vector2(0, -14)
 shape = SubResource("RectangleShape2D_actor")
+
+[node name="StudentSidewalkLeft" type="Sprite2D" parent="WorldSort"]
+position = Vector2(330, 780)
+scale = Vector2(0.59661, 0.59661)
+texture = ExtResource("9_stand_male_a")
+offset = Vector2(-3, -149)
+
+[node name="StudentSidewalkRight" type="Sprite2D" parent="WorldSort"]
+position = Vector2(1300, 820)
+scale = Vector2(0.635379, 0.635379)
+texture = ExtResource("10_stand_female_b")
+offset = Vector2(-3, -139)
 
 [node name="PhoneEventTrigger" type="Area2D" parent="."]
 position = Vector2(940, 675)

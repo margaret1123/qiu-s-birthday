@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dqh7m4xp1vrye"]
+[gd_scene load_steps=29 format=3 uid="uid://dqh7m4xp1vrye"]
 
 [ext_resource type="Texture2D" path="res://art/bg/S09_classroom_afterschool_bg.png" id="1_bg"]
 [ext_resource type="PackedScene" uid="uid://bvt8qnxwqy3ey" path="res://player.tscn" id="2_player"]
@@ -7,6 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://d2u0lp08bk2p2" path="res://dialogue_box.tscn" id="5_dialogue"]
 [ext_resource type="Texture2D" path="res://art/UI/出口5d5b52f2-3584-4d5c-a5a8-22e98a370f7c.png" id="6_exit_icon"]
 [ext_resource type="SpriteFrames" path="res://art/characters/Biu/biu_sprite_frames.tres" id="7_biu_frames"]
+[ext_resource type="Texture2D" path="res://art/characters/students/CHAR_STUDENTS_30_transparent_sprites/male_A/male_A_sit_back.png" id="8_seat_male_a"]
+[ext_resource type="Texture2D" path="res://art/characters/students/CHAR_STUDENTS_30_transparent_sprites/female_B/female_B_sit_back.png" id="9_seat_female_b"]
+[ext_resource type="Texture2D" path="res://art/characters/students/CHAR_STUDENTS_30_transparent_sprites/male_C/male_C_stand_front.png" id="10_stand_male_c"]
+[ext_resource type="Texture2D" path="res://art/characters/students/CHAR_STUDENTS_30_transparent_sprites/female_A/female_A_stand_front.png" id="11_stand_female_a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_left_wall"]
 size = Vector2(290, 1141)
@@ -189,6 +193,30 @@ position = Vector2(0, 880)
 texture = ExtResource("1_bg")
 polygon = PackedVector2Array(792, -166, 1032, -180, 1040, 0, 776, 0, 776, -3, 785, -54, 799, -63, 799, -144, 790, -150)
 uv = PackedVector2Array(792, 714, 1032, 700, 1040, 880, 776, 880, 776, 877, 785, 826, 799, 817, 799, 736, 790, 730)
+
+[node name="StudentSeatedA2" type="Sprite2D" parent="WorldSort"]
+position = Vector2(220, 668)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("8_seat_male_a")
+offset = Vector2(0, -93.5)
+
+[node name="StudentSeatedB2" type="Sprite2D" parent="WorldSort"]
+position = Vector2(575, 688)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("9_seat_female_b")
+offset = Vector2(-3, -91.5)
+
+[node name="StudentStandingA" type="Sprite2D" parent="WorldSort"]
+position = Vector2(740, 700)
+scale = Vector2(0.59661, 0.59661)
+texture = ExtResource("10_stand_male_c")
+offset = Vector2(-3, -149)
+
+[node name="StudentStandingB" type="Sprite2D" parent="WorldSort"]
+position = Vector2(755, 860)
+scale = Vector2(0.61324, 0.61324)
+texture = ExtResource("11_stand_female_a")
+offset = Vector2(-3, -144)
 
 [node name="BiuActor" type="StaticBody2D" parent="WorldSort"]
 position = Vector2(1120, 878)

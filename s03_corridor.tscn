@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cq3r7d9xw2mn5"]
+[gd_scene load_steps=19 format=3 uid="uid://cq3r7d9xw2mn5"]
 
 [ext_resource type="Texture2D" path="res://art/bg/S03_corridor_bg.png" id="1_bg"]
 [ext_resource type="PackedScene" uid="uid://bvt8qnxwqy3ey" path="res://player.tscn" id="2_player"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" path="res://art/UI/出口5d5b52f2-3584-4d5c-a5a8-22e98a370f7c.png" id="7_exit_icon"]
 [ext_resource type="SpriteFrames" path="res://art/characters/Biu/biu_sprite_frames.tres" id="8_biu_frames"]
 [ext_resource type="Texture2D" path="res://art/characters/students/CHAR_STUDENTS_30_transparent_sprites/male_A/male_A_stand_front.png" id="9_male_student"]
+[ext_resource type="Texture2D" path="res://art/characters/students/CHAR_STUDENTS_30_transparent_sprites/female_C/female_C_stand_front.png" id="10_stand_female_c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_left_wall"]
 size = Vector2(120, 1060)
@@ -104,6 +105,18 @@ offset = Vector2(-3, -144)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldSort/MaleStudentActor"]
 position = Vector2(0, -14)
 shape = SubResource("RectangleShape2D_actor")
+
+[node name="StudentFarLeft" type="Sprite2D" parent="WorldSort"]
+position = Vector2(350, 905)
+scale = Vector2(0.600683, 0.600683)
+texture = ExtResource("10_stand_female_c")
+offset = Vector2(-3, -147)
+
+[node name="StudentFarRight" type="Sprite2D" parent="WorldSort"]
+position = Vector2(1420, 900)
+scale = Vector2(0.59661, 0.59661)
+texture = ExtResource("9_male_student")
+offset = Vector2(-3, -149)
 
 [node name="TankEventTrigger" type="Area2D" parent="."]
 position = Vector2(930, 795)

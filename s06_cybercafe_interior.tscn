@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bn3p9xr6wt2ha"]
+[gd_scene load_steps=29 format=3 uid="uid://bn3p9xr6wt2ha"]
 
 [ext_resource type="Texture2D" path="res://art/bg/S06_cybercafe_interior_bg.png" id="1_bg"]
 [ext_resource type="PackedScene" uid="uid://bvt8qnxwqy3ey" path="res://player.tscn" id="2_player"]
@@ -8,6 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://d6m8lpzh34r5y" path="res://fade_overlay.tscn" id="6_fade"]
 [ext_resource type="Script" path="res://s06_cybercafe_interior.gd" id="7_s06gd"]
 [ext_resource type="Texture2D" path="res://art/UI/出口5d5b52f2-3584-4d5c-a5a8-22e98a370f7c.png" id="8_exit_icon"]
+[ext_resource type="Texture2D" path="res://art/characters/students/CHAR_STUDENTS_30_transparent_sprites/male_A/male_A_sit_back.png" id="9_seat_male_a"]
+[ext_resource type="Texture2D" path="res://art/characters/students/CHAR_STUDENTS_30_transparent_sprites/male_B/male_B_sit_back.png" id="10_seat_male_b"]
+[ext_resource type="Texture2D" path="res://art/characters/students/CHAR_STUDENTS_30_transparent_sprites/female_A/female_A_sit_back.png" id="11_seat_female_a"]
+[ext_resource type="Texture2D" path="res://art/characters/students/CHAR_STUDENTS_30_transparent_sprites/female_C/female_C_sit_back.png" id="12_seat_female_c"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_exit_icon"]
 atlas = ExtResource("8_exit_icon")
@@ -151,6 +155,30 @@ position = Vector2(0, 941)
 texture = ExtResource("1_bg")
 polygon = PackedVector2Array(300, -501, 402, -501, 402, 0, 300, 0)
 uv = PackedVector2Array(300, 440, 402, 440, 402, 941, 300, 941)
+
+[node name="GamerLeftTopA" type="Sprite2D" parent="WorldSort"]
+position = Vector2(100, 505)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("9_seat_male_a")
+offset = Vector2(0, -93.5)
+
+[node name="GamerLeftTopB" type="Sprite2D" parent="WorldSort"]
+position = Vector2(200, 500)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("10_seat_male_b")
+offset = Vector2(-0.5, -93)
+
+[node name="GamerMiddleLeft" type="Sprite2D" parent="WorldSort"]
+position = Vector2(785, 748)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("11_seat_female_a")
+offset = Vector2(-3, -91.5)
+
+[node name="GamerMiddleRight" type="Sprite2D" parent="WorldSort"]
+position = Vector2(938, 745)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("12_seat_female_c")
+offset = Vector2(-3, -96.5)
 
 [node name="Player" parent="WorldSort" instance=ExtResource("2_player")]
 position = Vector2(500, 850)

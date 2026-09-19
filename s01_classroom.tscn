@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://clp20p1awv1h8"]
+[gd_scene load_steps=32 format=3 uid="uid://clp20p1awv1h8"]
 
 [ext_resource type="Texture2D" path="res://art/bg/S01_classroom_morning_bg.png" id="1_bg"]
 [ext_resource type="PackedScene" uid="uid://bvt8qnxwqy3ey" path="res://player.tscn" id="2_player"]
@@ -8,6 +8,23 @@
 [ext_resource type="PackedScene" uid="uid://cq7x2m4vb9n8t" path="res://choice_box.tscn" id="6_choice"]
 [ext_resource type="Texture2D" path="res://art/UI/出口5d5b52f2-3584-4d5c-a5a8-22e98a370f7c.png" id="7_exit_icon"]
 [ext_resource type="PackedScene" uid="uid://d6m8lpzh34r5y" path="res://fade_overlay.tscn" id="8_fade"]
+[ext_resource type="Texture2D" path="res://art/characters/students/CHAR_STUDENTS_30_transparent_sprites/male_A/male_A_sit_back.png" id="9_seat_male_a"]
+[ext_resource type="Texture2D" path="res://art/characters/students/CHAR_STUDENTS_30_transparent_sprites/female_A/female_A_sit_back.png" id="10_seat_female_a"]
+[ext_resource type="Texture2D" path="res://art/characters/students/CHAR_STUDENTS_30_transparent_sprites/female_B/female_B_sit_back.png" id="11_seat_female_b"]
+[ext_resource type="Texture2D" path="res://art/characters/students/CHAR_STUDENTS_30_transparent_sprites/male_C/male_C_sit_back.png" id="12_seat_male_c"]
+[ext_resource type="Texture2D" path="res://art/characters/students/CHAR_STUDENTS_30_transparent_sprites/male_B/male_B_stand_front.png" id="13_stand_male_b"]
+[ext_resource type="Texture2D" path="res://art/characters/students/CHAR_STUDENTS_30_transparent_sprites/female_C/female_C_stand_front.png" id="14_stand_female_c"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hint"]
+content_margin_left = 22.0
+content_margin_top = 10.0
+content_margin_right = 22.0
+content_margin_bottom = 10.0
+bg_color = Color(0.101961, 0.129412, 0.180392, 0.717647)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_exit_icon"]
 atlas = ExtResource("7_exit_icon")
@@ -188,6 +205,42 @@ texture = ExtResource("1_bg")
 polygon = PackedVector2Array(792, -166, 1032, -180, 1040, 0, 776, 0, 776, -3, 785, -54, 799, -63, 799, -144, 790, -150)
 uv = PackedVector2Array(792, 714, 1032, 700, 1040, 880, 776, 880, 776, 877, 785, 826, 799, 817, 799, 736, 790, 730)
 
+[node name="StudentSeatedA1" type="Sprite2D" parent="WorldSort"]
+position = Vector2(310, 572)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("9_seat_male_a")
+offset = Vector2(0, -93.5)
+
+[node name="StudentSeatedB1" type="Sprite2D" parent="WorldSort"]
+position = Vector2(605, 572)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("10_seat_female_a")
+offset = Vector2(-3, -91.5)
+
+[node name="StudentSeatedA2" type="Sprite2D" parent="WorldSort"]
+position = Vector2(220, 668)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("11_seat_female_b")
+offset = Vector2(-3, -91.5)
+
+[node name="StudentSeatedB2" type="Sprite2D" parent="WorldSort"]
+position = Vector2(575, 688)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("12_seat_male_c")
+offset = Vector2(-2, -94)
+
+[node name="StudentStandingA" type="Sprite2D" parent="WorldSort"]
+position = Vector2(740, 700)
+scale = Vector2(0.59661, 0.59661)
+texture = ExtResource("13_stand_male_b")
+offset = Vector2(0, -149)
+
+[node name="StudentStandingB" type="Sprite2D" parent="WorldSort"]
+position = Vector2(755, 860)
+scale = Vector2(0.600683, 0.600683)
+texture = ExtResource("14_stand_female_c")
+offset = Vector2(-3, -147)
+
 [node name="Player" parent="WorldSort" instance=ExtResource("2_player")]
 position = Vector2(1080, 770)
 
@@ -223,3 +276,47 @@ shape = SubResource("RectangleShape2D_exit_trigger")
 [node name="ChoiceBox" parent="." instance=ExtResource("6_choice")]
 
 [node name="FadeOverlay" parent="." instance=ExtResource("8_fade")]
+
+[node name="YearOverlay" type="CanvasLayer" parent="."]
+layer = 110
+
+[node name="YearLabel" type="Label" parent="YearOverlay"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -80.0
+offset_right = 200.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 96
+text = "2006"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ControlHint" type="CanvasLayer" parent="."]
+layer = 15
+
+[node name="Hint" type="PanelContainer" parent="ControlHint"]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -270.0
+offset_top = 24.0
+offset_right = 270.0
+offset_bottom = 68.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hint")
+
+[node name="HintLabel" type="Label" parent="ControlHint/Hint"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.878431)
+theme_override_font_sizes/font_size = 18
+text = "WASD / 方向键：移动　E / 空格：互动"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -32,6 +32,9 @@ size = Vector2(200, 34)
 [node name="SchoolGateAfterSchool" type="Node2D"]
 script = ExtResource("4_s10gd")
 
+[node name="EveningLight" type="CanvasModulate" parent="."]
+color = Color(0.8, 0.76, 0.74, 1)
+
 [node name="Background" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Background"]

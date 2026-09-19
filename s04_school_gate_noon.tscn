@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dq7w3kx9np4ra"]
+[gd_scene load_steps=21 format=3 uid="uid://dq7w3kx9np4ra"]
 
 [ext_resource type="Texture2D" path="res://art/bg/S04_school_gate_noon_bg.png" id="1_bg"]
 [ext_resource type="PackedScene" uid="uid://bvt8qnxwqy3ey" path="res://player.tscn" id="2_player"]
@@ -8,6 +8,8 @@
 [ext_resource type="Script" path="res://s04_school_gate_noon.gd" id="6_gategd"]
 [ext_resource type="Texture2D" path="res://art/characters/Qiu/骑车载人92fd5a18-4cdc-43dc-af65-79dbc466f207.png" id="7_ride"]
 [ext_resource type="SpriteFrames" path="res://art/characters/Biu/biu_sprite_frames.tres" id="8_biu_frames"]
+[ext_resource type="Texture2D" path="res://art/characters/students/CHAR_STUDENTS_30_transparent_sprites/female_A/female_A_stand_front.png" id="9_stand_female_a"]
+[ext_resource type="Texture2D" path="res://art/characters/students/CHAR_STUDENTS_30_transparent_sprites/male_B/male_B_stand_front.png" id="10_stand_male_b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_left_wall"]
 size = Vector2(300, 2000)
@@ -107,6 +109,18 @@ offset = Vector2(0, -670)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldSort/BiuActor"]
 position = Vector2(0, -14)
 shape = SubResource("RectangleShape2D_actor")
+
+[node name="StudentPlazaLeft" type="Sprite2D" parent="WorldSort"]
+position = Vector2(300, 820)
+scale = Vector2(0.61324, 0.61324)
+texture = ExtResource("9_stand_female_a")
+offset = Vector2(-3, -144)
+
+[node name="StudentPlazaRight" type="Sprite2D" parent="WorldSort"]
+position = Vector2(1400, 780)
+scale = Vector2(0.59661, 0.59661)
+texture = ExtResource("10_stand_male_b")
+offset = Vector2(0, -149)
 
 [node name="GateDecisionTrigger" type="Area2D" parent="."]
 position = Vector2(790, 620)
