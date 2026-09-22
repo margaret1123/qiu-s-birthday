@@ -20,6 +20,24 @@ extends Node2D
 
 var _ended := false
 
+## The grown-up body, put on in code rather than left to the scene.
+##
+## The scene used to override the player's Body child directly, which is the
+## ordinary way to do this and is what the editor shows. The exported build does
+## not keep it: Godot 4.7 drops `[node name="Body" parent="WorldSort/Player"
+## index="0"]` when it converts the scene for export, so the build fell back to
+## player.tscn's own frames and the last scene played with the school-age sprite -
+## twenty years on, still in the uniform. The override survives in the editor,
+## which is why this only ever showed up in a shipped build.
+##
+## Applied here, the build cannot drop it. The values are the ones the scene
+## carried: the adult sheet, its scale and its offset. player.gd drives animation
+## names, which the adult sheet shares with the student one, so the walk cycle
+## keeps working without player.gd knowing anything about this.
+const ADULT_FRAMES := preload("res://art/characters/Qiu/adult_qiu_sprite_frames.tres")
+const ADULT_SCALE := Vector2(0.395653, 0.395653)
+const ADULT_OFFSET := Vector2(0, -340)
+
 @onready var _dialogue_box = $DialogueBox
 @onready var _fade = $FadeOverlay
 @onready var _player: CharacterBody2D = $WorldSort/Player
@@ -27,10 +45,27 @@ var _ended := false
 @onready var _photo: CanvasLayer = $FinalPhoto
 
 func _ready() -> void:
+	_wear_adult_body()
 	_dialogue_box.dialogue_finished.connect(_on_dialogue_finished)
 	_photo.visible = false
 	# Straight out of the black the gate ended on, so: fade up onto 2026.
 	_fade.fade_in()
+
+func _wear_adult_body() -> void:
+	var body := _player.get_node_or_null("Body") as AnimatedSprite2D
+	if body == null:
+		return
+	body.sprite_frames = ADULT_FRAMES
+	body.scale = ADULT_SCALE
+	body.offset = ADULT_OFFSET
+	body.play("idle_down")
+
+	# Biu is drawn as the cake sprite under Visual, and the scene switched her own
+	# body off so the two would not stack. That override is dropped by the same
+	# export step, which would leave an idle NPC standing behind the cake.
+	var biu_body := _biu.get_node_or_null("Body") as AnimatedSprite2D
+	if biu_body != null:
+		biu_body.visible = false
 
 ## The line has been read through. Nothing is said after it and nothing is played
 ## after it: the photograph goes up, the line stays where it is, and the scene is

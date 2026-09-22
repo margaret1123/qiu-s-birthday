@@ -81,6 +81,20 @@ var _segment_lines: Array[String] = []
 ## A cancel closes the box without it, which is how the two are told apart.
 var _segment_finished := false
 
+## The two bodies are sized here rather than left to the scene.
+##
+## The scene used to override them directly, which is the ordinary way to do this
+## and is what the editor shows. The exported build does not keep it: Godot 4.7
+## drops `[node name="Body" parent="WorldSort/Player" index="0"]` when it converts
+## a scene for export, so the build fell back to player.tscn's and npc.tscn's own
+## scales and both characters came out about half again too large in the cafe.
+## The override survives in the editor, which is why this only ever showed up in a
+## shipped build.
+##
+## The values are the ones the scene carried.
+const PLAYER_SCALE := Vector2(0.267477, 0.267477)
+const BIU_SCALE := Vector2(0.131441, 0.131441)
+
 @onready var _dialogue_box = $DialogueBox
 @onready var _choice_box = $ChoiceBox
 @onready var _fade = $FadeOverlay
@@ -90,6 +104,7 @@ var _segment_finished := false
 @onready var _exit_trigger: Area2D = $ExitTrigger
 
 func _ready() -> void:
+	_size_bodies()
 	_dialogue_box.dialogue_finished.connect(_on_dialogue_finished)
 	_choice_box.choice_selected.connect(_on_choice_selected)
 	_exit_trigger.body_entered.connect(_on_exit_entered)
@@ -101,6 +116,14 @@ func _ready() -> void:
 	_exit_trigger.monitoring = false
 	# Walked in off the street - a fresh map, so fade up from black.
 	_fade.fade_in()
+
+func _size_bodies() -> void:
+	var player_body := _player.get_node_or_null("Body") as AnimatedSprite2D
+	if player_body != null:
+		player_body.scale = PLAYER_SCALE
+	var biu_body := _biu.get_node_or_null("Body") as AnimatedSprite2D
+	if biu_body != null:
+		biu_body.scale = BIU_SCALE
 
 ## Biu's own interaction opens her lines; this only decides what follows them.
 ##
