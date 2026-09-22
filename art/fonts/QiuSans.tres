@@ -1,0 +1,14 @@
+[gd_resource type="FontVariation" load_steps=3 format=3]
+
+[ext_resource type="FontFile" path="res://art/fonts/QiuSans.otf" id="1_base"]
+[ext_resource type="FontFile" path="res://art/fonts/QiuSansFallback.ttf" id="2_cyrillic"]
+
+; The game ships its own font so the Web build renders CJK at all: a browser
+; offers no system fonts to fall back on, and the stock font has no ideographs.
+; The two files are subsets of Noto Sans CJK SC and Noto Sans (both OFL), cut to
+; the glyphs this game actually prints. QiuSans carries the Chinese; the much
+; smaller companion is chained behind it for the handful of Cyrillic marks in
+; the S11 kaomoji, which Noto Sans CJK does not cover.
+[resource]
+base_font = ExtResource("1_base")
+fallbacks = Array[Font]([ExtResource("2_cyrillic")])
